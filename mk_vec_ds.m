@@ -1,5 +1,6 @@
 function [ret] = mk_vec_ds(n_ds, dx_mu, dx_sigma, r_0, s_0, dd_mid)
-% mk_vec_ds	    Make a vector of DS
+%MK_VEC_DS      Make a vector of DS
+%MK_VEC_DS(n_ds, dx_mu, dx_sigma, r_0, s_0, dd_mid)
 %   n_ds        Number of DS
 %   dx_mu       Mean of distances between DS ~ Normal dist.
 %   dx_sigma    STDEV of distances between DS

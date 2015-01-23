@@ -1,5 +1,7 @@
 function [ret] = objective_f(delta)
-%   Detailed explanation goes here
+%OBJECTIVE_F    Objective function definition
+%OBJECTIVE_F(delta)
+%   delta       Time elapsed from deadline to actual delivery time
 
 limit = ones(size(delta));
 objective = exp(-delta / 20);

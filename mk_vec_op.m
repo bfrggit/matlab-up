@@ -1,5 +1,6 @@
 function [ret] = mk_vec_op(n_op, dx_mid, er_mu, er_sigma)
-% mk_vec_op     Make a vector of OP
+%MK_VEC_OP      Make a vector of OP
+%MK_VEC_OP(n_op, dx_mid, er_mu, er_sigma)
 %   n_op        Number of OP
 %   dx_mid      Mean of distances between DS ~ Uniform dist.
 %   er_mu       Mean of estimated uploading rates ~ Normal dist.
