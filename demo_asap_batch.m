@@ -4,14 +4,12 @@
 % Batch script
 
 % Initialize environment
-init_p;
+clc;
 rand('state', 0); %#ok<RAND>
 randn('state', 0); %#ok<RAND>
 
 % Constants
-N_DS = 20; DX_MU = 500; DX_SIGMA = 100; R_0 = 1000; S_0 = 10000; DD_M = 250;
-N_OP = 50; DX_M = 200; ER_MU = 500; ER_SIGMA = 200;
-N_LOOP = 1000;
+N_LOOP = 100;
 
 rw = zeros(1, N_LOOP);
 ss = zeros(size(P_DIST, 1), 2);
@@ -20,7 +18,7 @@ tic
 for j = 1:N_LOOP
     % Generate demo instances
     v_ds = mk_vec_ds(N_DS, DX_MU, DX_SIGMA, R_0, S_0, DD_M);
-    v_op = mk_vec_op(N_OP, DX_M, ER_MU, ER_SIGMA);
+    v_op = mk_vec_op(N_OP, DX_M, ER_MU, ER_SIGMA, ER_MIN);
 
     % ASAP planning
     et = cputime;
@@ -38,7 +36,9 @@ toc
 
 fprintf('\nTime spent in planning is %f seconds.\n', et_plan);
 fprintf('\nAverage reward over %d loop(s)', N_LOOP);
-rate = sum(rw') / size(rw, 2)
+ra = sum(rw, 2) / size(rw, 2)
+fprintf('\nStandard deviation of reward');
+rd = std(rw)
 fprintf('\nCount for each priority group');
 ss
 fprintf('\nSuccess rate for each priority group');

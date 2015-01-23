@@ -18,7 +18,7 @@ P_DIST = [
 % V_MDC
 %   Speed of MDC
 global V_MDC;
-V_MDC = 2;
+V_MDC = 5;
 
 % INF_PSEUDO
 %   Pseudo infinity used for last OP (infinitely far OP)

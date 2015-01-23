@@ -1,4 +1,4 @@
-function [ret] = mk_vec_op(n_op, dx_mid, er_mu, er_sigma)
+function [ret] = mk_vec_op(n_op, dx_mid, er_mu, er_sigma, er_min)
 %MK_VEC_OP      Make a vector of OP
 %MK_VEC_OP(n_op, dx_mid, er_mu, er_sigma)
 %   n_op        Number of OP
@@ -11,7 +11,9 @@ global INF_PSEUDO;
 dx = round(rand(n_op, 1) * dx_mid * 2);
 x = cumsum(dx);
 x(end + 1) = INF_PSEUDO;
-er = round(normrnd(er_mu, er_sigma, n_op, 1));
+mu = er_mu / er_min;
+sigma = er_sigma / er_min;
+er = bsxfun(@max, round(normrnd(mu, sigma, n_op, 1)), 1) * er_min;
 er(end + 1) = Inf;
 ret = [x er];
 
