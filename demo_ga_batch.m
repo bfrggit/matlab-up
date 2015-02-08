@@ -9,7 +9,7 @@ rand('state', 0); %#ok<RAND>
 randn('state', 0); %#ok<RAND>
 
 % Constants
-N_LOOP = 100;
+N_LOOP = 200;
 
 rw = zeros(1, N_LOOP);
 ss = zeros(size(P_DIST, 1), 2);

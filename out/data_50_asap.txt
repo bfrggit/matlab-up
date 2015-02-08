@@ -1,0 +1,24 @@
+ASAP planning...
+
+Elapsed time is 0.001130 seconds.
+
+Reward of plan
+rw =
+
+    0.1541
+
+
+Count for each priority group
+ss =
+
+    10     3
+    26     4
+    64     5
+
+
+Success rate for each priority group
+sr =
+
+    0.3000
+    0.1538
+    0.0781

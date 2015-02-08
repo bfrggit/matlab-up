@@ -1,0 +1,630 @@
+Running loop 1 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 2 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 3 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 4 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 5 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 6 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 7 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 8 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 9 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 10 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 11 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 12 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 13 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 14 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 15 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 16 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 17 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 18 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 19 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 20 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 21 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 22 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 23 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 24 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 25 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 26 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 27 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 28 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 29 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 30 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 31 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 32 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 33 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 34 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 35 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 36 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 37 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 38 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 39 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 40 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 41 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 42 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 43 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 44 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 45 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 46 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 47 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 48 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 49 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 50 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 51 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 52 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 53 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 54 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 55 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 56 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 57 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 58 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 59 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 60 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 61 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 62 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 63 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 64 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 65 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 66 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 67 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 68 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 69 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 70 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 71 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 72 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 73 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 74 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 75 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 76 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 77 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 78 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 79 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 80 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 81 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 82 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 83 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 84 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 85 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 86 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 87 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 88 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 89 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 90 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 91 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 92 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 93 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 94 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 95 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 96 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 97 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 98 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 99 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 100 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 101 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 102 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 103 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 104 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 105 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 106 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 107 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 108 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 109 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 110 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 111 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 112 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 113 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 114 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 115 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 116 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 117 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 118 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 119 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 120 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 121 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 122 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 123 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 124 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 125 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 126 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 127 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 128 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 129 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 130 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 131 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 132 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 133 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 134 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 135 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 136 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 137 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 138 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 139 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 140 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 141 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 142 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 143 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 144 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 145 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 146 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 147 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 148 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 149 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 150 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 151 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 152 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 153 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 154 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 155 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 156 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 157 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 158 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 159 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 160 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 161 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 162 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 163 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 164 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 165 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 166 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 167 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 168 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 169 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 170 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 171 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 172 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 173 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 174 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 175 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 176 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 177 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 178 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 179 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 180 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 181 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 182 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 183 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 184 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 185 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 186 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 187 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 188 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 189 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 190 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 191 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 192 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 193 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 194 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 195 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 196 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 197 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 198 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 199 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Running loop 200 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Elapsed time is 12409.268299 seconds.
+
+Time spent in planning is 13548.910000 seconds.
+
+Average reward over 200 loop(s)
+ra =
+
+    0.8943
+
+
+Standard deviation of reward
+rd =
+
+    0.1252
+
+
+Count for each priority group
+ss =
+
+        2061        1896
+        5876        5230
+       12063       10492
+
+
+Success rate for each priority group
+sr =
+
+    0.9199
+    0.8901
+    0.8698

@@ -1,0 +1,50 @@
+ASAP planning...
+
+Elapsed time is 0.000789 seconds.
+
+Reward of plan
+rw =
+
+    0.1890
+
+
+Count for each priority group
+ss =
+
+    10     3
+    29     4
+    61    10
+
+
+Success rate for each priority group
+sr =
+
+    0.3000
+    0.1379
+    0.1639
+
+GA planning: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
+
+Elapsed time is 12.954120 seconds.
+
+Reward of plan
+rw =
+
+    0.4902
+
+
+Count for each priority group
+ss =
+
+    10     5
+    29    16
+    61    26
+
+
+Success rate for each priority group
+sr =
+
+    0.5000
+    0.5517
+    0.4262
