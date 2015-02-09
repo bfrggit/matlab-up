@@ -13,8 +13,8 @@ S_0 = 10000;
 DD_M = 120;
 
 % Constants for OP
-N_OP = 250;
-DX_M = 200;
+N_OP = 20;
+DX_M = 2500;
 ER_MU = 500;
 ER_SIGMA = 250;
 ER_MIN = 25;
