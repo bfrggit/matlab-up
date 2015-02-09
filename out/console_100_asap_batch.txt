@@ -1,0 +1,30 @@
+Elapsed time is 0.915425 seconds.
+
+Time spent in planning is 0.160000 seconds.
+
+Average reward over 200 loop(s)
+ra =
+
+    0.6959
+
+
+Standard deviation of reward
+rd =
+
+    0.3037
+
+
+Count for each priority group
+ss =
+
+        1988        1373
+        5950        4085
+       12062        8218
+
+
+Success rate for each priority group
+sr =
+
+    0.6906
+    0.6866
+    0.6813
