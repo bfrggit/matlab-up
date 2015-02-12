@@ -1,6 +1,6 @@
-Elapsed time is 0.925135 seconds.
+Elapsed time is 0.839579 seconds.
 
-Time spent in planning is 0.220000 seconds.
+Time spent in planning is 0.060000 seconds.
 
 Average reward over 200 loop(s)
 ra =
@@ -28,3 +28,4 @@ sr =
     0.6743
     0.6509
     0.5989
+
