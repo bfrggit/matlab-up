@@ -14,7 +14,7 @@ x(end + 1) = INF_PSEUDO;
 mu = er_mu / er_min;
 sigma = er_sigma / er_min;
 er = bsxfun(@max, round(normrnd(mu, sigma, n_op, 1)), 1) * er_min;
-er(end + 1) = Inf;
+er(end + 1) = INF_PSEUDO;
 ret = [x er];
 
 end

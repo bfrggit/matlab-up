@@ -4,8 +4,8 @@
 
 % Initialize environment
 clc;
-rand('state', 9); %#ok<RAND>
-randn('state', 9); %#ok<RAND>
+rand('state', 3); %#ok<RAND>
+randn('state', 3); %#ok<RAND>
 
 % Generate demo instances
 v_ds = mk_vec_ds(N_DS, DX_MU, DX_SIGMA, R_0, S_0, DD_M);

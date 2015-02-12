@@ -1,6 +1,7 @@
 function [ret] = vec_t3(b_oo, v_op, v_ds, mat_m)
 %VEC_T3         Calculate time spent on OP (uploading) before OP
 %               Assuming all uploading tasks at one OP finish together
+%               At either beginning of OP OR end of OP depending on B_OO
 %VEC_T3(b_oo, v_op, v_ds, mat_m)
 %   b_oo        Matrix B_OO
 %   v_op        OP vector
