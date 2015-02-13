@@ -24,7 +24,7 @@ for j = 1:N_LOOP
     %[cst_m, cst_ls] = plan_asap(v_ds, v_op);
     
     % Algorithm 4 planning
-    fprintf(sprintf('Running loop %d of %d: ', j, N_LOOP));
+    fprintf(sprintf('Running loop %d of %d...\n', j, N_LOOP));
     et = cputime;
     [mat_m, ls] = plan_alg4(v_ds, v_op);
     et_plan = et_plan + (cputime - et);
