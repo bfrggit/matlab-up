@@ -13,7 +13,8 @@ and constraint violation is less than options.TolCon.
 Running loop 5 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
 and constraint violation is less than options.TolCon.
 
-Running loop 6 of 200: Optimization terminated: maximum number of generations exceeded.
+Running loop 6 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
 
 Running loop 7 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
 and constraint violation is less than options.TolCon.
@@ -597,33 +598,34 @@ and constraint violation is less than options.TolCon.
 Running loop 200 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
 and constraint violation is less than options.TolCon.
 
-Elapsed time is 3357.326231 seconds.
+Elapsed time is 4891.528056 seconds.
 
-Time spent in planning is 3492.770000 seconds.
+Time spent in planning is 5468.930000 seconds.
 
 Average reward over 200 loop(s)
 ra =
 
-    0.8400
+    0.8647
 
 
 Standard deviation of reward
 rd =
 
-    0.1419
+    0.1251
 
 
 Count for each priority group
 ss =
 
-        2048        1784
-        5928        4984
-       12024        9722
+        2002        1802
+        5897        5147
+       12101        9995
 
 
 Success rate for each priority group
 sr =
 
-    0.8711
-    0.8408
-    0.8085
+    0.9001
+    0.8728
+    0.8260
+

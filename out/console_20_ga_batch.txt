@@ -109,7 +109,8 @@ and constraint violation is less than options.TolCon.
 Running loop 37 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
 and constraint violation is less than options.TolCon.
 
-Running loop 38 of 200: Optimization terminated: maximum number of generations exceeded.
+Running loop 38 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
 
 Running loop 39 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
 and constraint violation is less than options.TolCon.
@@ -279,8 +280,7 @@ and constraint violation is less than options.TolCon.
 Running loop 94 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
 and constraint violation is less than options.TolCon.
 
-Running loop 95 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
-and constraint violation is less than options.TolCon.
+Running loop 95 of 200: Optimization terminated: maximum number of generations exceeded.
 
 Running loop 96 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
 and constraint violation is less than options.TolCon.
@@ -342,7 +342,8 @@ and constraint violation is less than options.TolCon.
 Running loop 115 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
 and constraint violation is less than options.TolCon.
 
-Running loop 116 of 200: Optimization terminated: maximum number of generations exceeded.
+Running loop 116 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
 
 Running loop 117 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
 and constraint violation is less than options.TolCon.
@@ -413,12 +414,14 @@ and constraint violation is less than options.TolCon.
 Running loop 139 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
 and constraint violation is less than options.TolCon.
 
-Running loop 140 of 200: Optimization terminated: maximum number of generations exceeded.
+Running loop 140 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
 
 Running loop 141 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
 and constraint violation is less than options.TolCon.
 
-Running loop 142 of 200: Optimization terminated: maximum number of generations exceeded.
+Running loop 142 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
+and constraint violation is less than options.TolCon.
 
 Running loop 143 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
 and constraint violation is less than options.TolCon.
@@ -594,33 +597,34 @@ and constraint violation is less than options.TolCon.
 Running loop 200 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
 and constraint violation is less than options.TolCon.
 
-Elapsed time is 2802.609841 seconds.
+Elapsed time is 4389.589758 seconds.
 
-Time spent in planning is 2859.900000 seconds.
+Time spent in planning is 4773.150000 seconds.
 
 Average reward over 200 loop(s)
 ra =
 
-    0.7529
+    0.7865
 
 
 Standard deviation of reward
 rd =
 
-    0.1336
+    0.1338
 
 
 Count for each priority group
 ss =
 
-        1983        1577
-        5900        4561
-       12117        8498
+        2093        1763
+        5860        4682
+       12047        8810
 
 
 Success rate for each priority group
 sr =
 
-    0.7953
-    0.7731
-    0.7013
+    0.8423
+    0.7990
+    0.7313
+

@@ -598,33 +598,34 @@ and constraint violation is less than options.TolCon.
 Running loop 200 of 200: Optimization terminated: average change in the penalty fitness value less than options.TolFun
 and constraint violation is less than options.TolCon.
 
-Elapsed time is 4391.533300 seconds.
+Elapsed time is 6998.534841 seconds.
 
-Time spent in planning is 4675.290000 seconds.
+Time spent in planning is 7789.100000 seconds.
 
 Average reward over 200 loop(s)
 ra =
 
-    0.8675
+    0.8810
 
 
 Standard deviation of reward
 rd =
 
-    0.1378
+    0.1261
 
 
 Count for each priority group
 ss =
 
-        2054        1855
-        6022        5225
-       11924        9953
+        2014        1833
+        5978        5263
+       12008       10229
 
 
 Success rate for each priority group
 sr =
 
-    0.9031
-    0.8677
-    0.8347
+    0.9101
+    0.8804
+    0.8518
+
