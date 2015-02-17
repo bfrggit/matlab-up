@@ -44,6 +44,7 @@ fprintf('\nAverage reward over %d loop(s)', N_LOOP);
 %ra = sum(rw, 2) / size(rw, 2)
 ra = mean(rw, 2)
 hist(rw, 0:0.1:1);
+axis([-0.2 1.2 0 160]);
 fprintf('\nStandard deviation of reward');
 rd = std(rw)
 fprintf('\nCount for each priority group');
