@@ -15,8 +15,8 @@ lb = cst_ls';
 ub = repmat(n_op, 1, n_ds);
 
 % Create a dynamic list to keep unallocated DS
-%sort_ds_dl = sortrows([(1:n_ds)' v_ds(:, 4)], 2);
-sort_ds_dl = sortrows([(1:n_ds)' v_ds(:, 1)], 2);
+sort_ds_dl = sortrows([(1:n_ds)' v_ds(:, 4)], 2);
+%sort_ds_dl = sortrows([(1:n_ds)' v_ds(:, 1)], 2);
 dynamic_ds = cell(1, n_ds);
 for j = 1:n_ds
     dynamic_ds{j} = sort_ds_dl(n_ds - j + 1, 1);
