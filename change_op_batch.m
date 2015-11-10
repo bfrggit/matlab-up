@@ -30,7 +30,7 @@ number_of_op = (5:5:100)';
 dxs_m = LENGTH./ number_of_op;
 nm_op = size(number_of_op, 1);
 loop_n = N_LOOP * nm_op;
-reward = zeros(nm_op, 3);
+reward_total = zeros(nm_op, 3);
 time_running = zeros(nm_op, 3);
 
 tic
@@ -89,9 +89,9 @@ for j = 1:nm_op
         rw3 = reward(v_ds, v_f);
         rw3_total = rw3_total + rw3;
     end
-    reward(j, 1) = rw1_total / N_LOOP;
-    reward(j, 2) = rw2_total / N_LOOP;
-    reward(j, 3) = rw3_total / N_LOOP;
+    reward_total(j, 1) = rw1_total / N_LOOP;
+    reward_total(j, 2) = rw2_total / N_LOOP;
+    reward_total(j, 3) = rw3_total / N_LOOP;
     time_running(j, 1) = et_plan1 / N_LOOP;
     time_running(j, 2) = et_plan2 / N_LOOP;
     time_running(j, 3) = et_plan3 / N_LOOP;
