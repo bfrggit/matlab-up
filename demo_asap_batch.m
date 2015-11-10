@@ -26,7 +26,7 @@ for j = 1:N_LOOP
     et_plan = et_plan + (cputime - et);
 
     % Calculate actual upload time
-    t_up = vec_t_up(v_ds, v_op, mat_m);
+    t_up = vec_t_up(v_ds, v_op, mat_m, T_WAIT);
     v_f = vec_f(v_ds, t_up);
     
     rw(j) = reward(v_ds, v_f);

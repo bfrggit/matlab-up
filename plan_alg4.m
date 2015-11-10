@@ -1,8 +1,9 @@
-function [m, ls] = plan_alg4(v_ds, v_op)
+function [m, ls] = plan_alg4(v_ds, v_op, t_wait)
 %PLAN_ALG4      Generate a plan using algorithm 4
 %PLAN_ALG4(v_ds, v_op)
 %   v_ds        DS vector
 %   v_op        OP vector
+%   t_wait      Time to wait before connection can be established
 
 n_ds = size(v_ds, 1);
 n_op = size(v_op, 1);
@@ -42,7 +43,7 @@ while size(dynamic_ds, 2) > 0
         for j = first_op:n_op % Test OP
             tmp_x = present_x;
             tmp_x(present_ds) = j;
-            v_f = vec_f(v_ds, vec_t_up(v_ds, v_op, ls_to_m(tmp_x, n_op)));
+            v_f = vec_f(v_ds, vec_t_up(v_ds, v_op, ls_to_m(tmp_x, n_op), t_wait));
             if v_f(present_ds) > 1-1e-6 % In-time delivery
                 if chosen_op >= n_op || v_op(j, 2) > v_op(chosen_op, 2)
                     chosen_op = j;
@@ -51,7 +52,7 @@ while size(dynamic_ds, 2) > 0
                 break
             end
         end
-        v_f = vec_f(v_ds, vec_t_up(v_ds, v_op, ls_to_m(present_x, n_op)));
+        v_f = vec_f(v_ds, vec_t_up(v_ds, v_op, ls_to_m(present_x, n_op), t_wait));
 
         if chosen_op < n_op % If this DS does fit
             present_x(present_ds) = chosen_op;

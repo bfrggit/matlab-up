@@ -26,12 +26,12 @@ for j = 1:N_LOOP
     % Algorithm 4 planning
     fprintf(sprintf('Running loop %d of %d...\n', j, N_LOOP));
     et = cputime;
-    [mat_m, ls] = plan_alg4(v_ds, v_op);
+    [mat_m, ls] = plan_alg4(v_ds, v_op, T_WAIT);
     et_plan = et_plan + (cputime - et);
     fprintf('\n');
 
     % Calculate actual upload time
-    t_up = vec_t_up(v_ds, v_op, mat_m);
+    t_up = vec_t_up(v_ds, v_op, mat_m, T_WAIT);
     v_f = vec_f(v_ds, t_up);
     
     rw(j) = reward(v_ds, v_f);

@@ -18,7 +18,7 @@ tic
 toc
 
 % Calculate actual upload time
-t_up = vec_t_up(v_ds, v_op, cst_m);
+t_up = vec_t_up(v_ds, v_op, cst_m, T_WAIT);
 v_f = vec_f(v_ds, t_up);
 
 fprintf('\nReward of plan');
@@ -31,12 +31,12 @@ sr = ss(:, 2)./ ss(:, 1) %#ok<NASGU>
 % GA planning
 fprintf('GA planning: ');
 tic
-[mat_m, ls] = plan_ga(v_ds, v_op, cst_ls);
+[mat_m, ls] = plan_ga(v_ds, v_op, cst_ls, T_WAIT);
 fprintf('\n');
 toc
 
 % Calculate actual upload time
-t_up = vec_t_up(v_ds, v_op, mat_m);
+t_up = vec_t_up(v_ds, v_op, mat_m, T_WAIT);
 v_f = vec_f(v_ds, t_up);
 
 fprintf('\nReward of plan');

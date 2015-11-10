@@ -5,16 +5,16 @@
 init_p;
 
 % Constants for DS
-N_DS = 100;
-DX_MU = 300;
-DX_SIGMA = 100;
+N_DS = 30;
+DX_MU = 150;
+DX_SIGMA = 50;
 R_0 = 1000;
-S_0 = 10000;
-DD_M = 120;
+S_0 = 5000;
+DD_M = 60;
 
 % Constants for OP
 N_OP = 20;
-DX_M = 2500;
+DX_M = 300;
 ER_MU = 500;
 ER_SIGMA = 250;
 ER_MIN = 25;
