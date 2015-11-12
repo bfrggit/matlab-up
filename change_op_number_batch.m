@@ -12,7 +12,7 @@ randn('state', 0); %#ok<RAND>
 
 % Constants for DS
 N_DS = 30;
-DX_MU = 150;
+DX_MU = 180;
 DX_SIGMA = 50;
 R_0 = 1000;
 S_0 = 5000;

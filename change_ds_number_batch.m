@@ -11,11 +11,10 @@ rand('state', 0); %#ok<RAND>
 randn('state', 0); %#ok<RAND>
 
 % Constants for DS
-DX_MU = 150;
-DX_SIGMA = 50;
 R_0 = 1000;
 DD_M = 60;
 TOTAL_SIZE = 150000;
+LENGTH = 5400;
 
 % Constants for OP
 N_OP = 20;
@@ -29,6 +28,8 @@ N_LOOP = 50;
 
 number_of_ds = (2:2:40)';
 ss_o = TOTAL_SIZE./ number_of_ds;
+dxs_mu = LENGTH./ number_of_ds;
+dxs_sigma = dxs_mu./ 3;
 nm_ds = size(number_of_ds, 1);
 loop_n = N_LOOP * nm_ds;
 reward_total = zeros(nm_ds, 3);
@@ -44,7 +45,7 @@ for j = 1:nm_ds
     et_plan3 = 0.0;
     for k = 1:N_LOOP
         % Generate demo instances
-        v_ds = mk_vec_ds(number_of_ds(j), DX_MU, DX_SIGMA, R_0, ss_o(j), DD_M);
+        v_ds = mk_vec_ds(number_of_ds(j), dxs_mu(j), dxs_sigma(j), R_0, ss_o(j), DD_M);
         v_op = mk_vec_op(N_OP, DX_M, ER_MU, ER_SIGMA, ER_MIN);
         
         loop_j = k + (j - 1)* N_LOOP;
