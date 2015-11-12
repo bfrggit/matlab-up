@@ -1,6 +1,7 @@
 % Author: Charles ZHU
 % --
-%
+% Statistics, w/ fixed path length, variable number of OP
+% Batch script
 
 init_p;
 
