@@ -99,3 +99,12 @@ for j = 1:nm_ds
     time_running(j, 3) = et_plan3 / N_LOOP;
 end
 toc
+plot(number_of_ds, reward_total);
+xlabel('Number of data sites');
+ylabel('Weighted overall utility');
+legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+figure;
+plot(number_of_ds, time_running);
+xlabel('Number of data sites');
+ylabel('Running time (sec)');
+legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
