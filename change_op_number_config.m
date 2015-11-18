@@ -55,7 +55,7 @@ for j = 1:nm_op
         v_op = mk_vec_op(number_of_op(j), dxs_m(j), ER_MU, ER_SIGMA, ER_MIN);
         
         % Write to scenario configuration file
-        fh = fopen(sprintf('config/change_op_number/%d/case_%d/case.deployment', number_of_op(j), k), 'w');
+        fh = fopen(sprintf('config/change_op_number/%d/case_%d/case.up.deployment', number_of_op(j), k), 'w');
         fprintf(fh, 'MOBILE_DATA_COLLECTOR\n');
         fprintf(fh, '%d %d\n', V_MDC, R_0 * 8);
         fprintf(fh, '\n');
