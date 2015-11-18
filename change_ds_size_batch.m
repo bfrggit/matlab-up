@@ -101,8 +101,13 @@ plot(size_of_ds, reward_total);
 xlabel('Size of one single data chunk (kB)');
 ylabel('Weighted overall utility');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+savefig('fig/change_ds_size_reward.fig');
+
 figure;
 plot(size_of_ds, time_running);
 xlabel('Size of one single data chunk (kB)');
 ylabel('Running time (sec)');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+savefig('fig/change_ds_size_time.fig');
+
+save('mat/change_ds_size.mat')

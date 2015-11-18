@@ -103,8 +103,13 @@ plot(number_of_ds, reward_total);
 xlabel('Number of data sites');
 ylabel('Weighted overall utility');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+savefig('fig/change_ds_number_reward.fig');
+
 figure;
 plot(number_of_ds, time_running);
 xlabel('Number of data sites');
 ylabel('Running time (sec)');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+savefig('fig/change_ds_number_time.fig');
+
+save('mat/change_ds_number.mat')

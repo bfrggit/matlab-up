@@ -102,8 +102,13 @@ plot(number_of_op, reward_total);
 xlabel('Number of upload opportunities');
 ylabel('Weighted overall utility');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+savefig('fig/change_op_number_reward.fig');
+
 figure;
 plot(number_of_op, time_running);
 xlabel('Number of upload opportunities');
 ylabel('Running time (sec)');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+savefig('fig/change_op_number_time.fig');
+
+save('mat/change_op_number.mat')
