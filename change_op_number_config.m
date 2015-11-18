@@ -11,9 +11,9 @@ rand('state', 0); %#ok<RAND>
 randn('state', 0); %#ok<RAND>
 
 % Constants for DS
-N_DS = 30;
-DX_MU = 180;
-DX_SIGMA = 60;
+N_DS = 20;
+DX_MU = 270;
+DX_SIGMA = 90;
 R_0 = 1500;
 S_0 = 5000;
 DD_M = 60;
@@ -27,7 +27,7 @@ ER_MIN = 25;
 % Constants
 N_LOOP = 20;
 
-number_of_op = (10:10:50)';
+number_of_op = (2:2:24)';
 dxs_m = LENGTH./ number_of_op;
 nm_op = size(number_of_op, 1);
 loop_n = N_LOOP * nm_op;
