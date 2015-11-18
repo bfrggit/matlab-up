@@ -11,9 +11,9 @@ rand('state', 0); %#ok<RAND>
 randn('state', 0); %#ok<RAND>
 
 % Constants for DS
-N_DS = 30;
-DX_MU = 180;
-DX_SIGMA = 60;
+N_DS = 20;
+DX_MU = 270;
+DX_SIGMA = 90;
 R_0 = 1500;
 S_0 = 5000;
 DD_M = 60;
@@ -27,7 +27,7 @@ ER_MIN = 25;
 % Constants
 N_LOOP = 20;
 
-number_of_op = (10:10:50)';
+number_of_op = (2:2:24)';
 dxs_m = LENGTH./ number_of_op;
 nm_op = size(number_of_op, 1);
 loop_n = N_LOOP * nm_op;
@@ -55,7 +55,7 @@ for j = 1:nm_op
         v_op = mk_vec_op(number_of_op(j), dxs_m(j), ER_MU, ER_SIGMA, ER_MIN);
         
         % Write to scenario configuration file
-        fh = fopen(sprintf('config/change_op_number/%d/case_%d/case.deployment', number_of_op(j), k), 'w');
+        fh = fopen(sprintf('config/change_op_number/%d/case_%d/case.up.deployment', number_of_op(j), k), 'w');
         fprintf(fh, 'MOBILE_DATA_COLLECTOR\n');
         fprintf(fh, '%d %d\n', V_MDC, R_0 * 8);
         fprintf(fh, '\n');
