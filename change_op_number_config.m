@@ -25,7 +25,7 @@ ER_SIGMA = 250;
 ER_MIN = 25;
 
 % Constants
-N_LOOP = 20;
+N_LOOP = 10;
 
 number_of_op = (2:2:24)';
 dxs_m = LENGTH./ number_of_op;
@@ -66,7 +66,7 @@ for j = 1:nm_op
         fprintf(fh, '\n');
         fprintf(fh, 'DATA_SITES\n');
         for it_ds = 1:N_DS
-            fprintf(fh, '%d %d %d %.1f\n', v_ds(it_ds, 1), round(v_ds(it_ds, 3) * 1000 / 1024), v_ds(it_ds, 4), v_ds(it_ds, 5));
+            fprintf(fh, '%d %d %d %.1f\n', v_ds(it_ds, 1), round(v_ds(it_ds, 3) * 1000 / 1024), max([v_ds(it_ds, 4) 1]'), v_ds(it_ds, 5));
         end
         fprintf(fh, '\n');
         fclose(fh);
