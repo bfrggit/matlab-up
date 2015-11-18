@@ -14,7 +14,7 @@ randn('state', 0); %#ok<RAND>
 N_DS = 30;
 DX_MU = 180;
 DX_SIGMA = 60;
-R_0 = 1000;
+R_0 = 1500;
 S_0 = 5000;
 DD_M = 60;
 
@@ -102,13 +102,13 @@ plot(number_of_op, reward_total);
 xlabel('Number of upload opportunities');
 ylabel('Weighted overall utility');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
-savefig('fig/change_op_number_reward.fig');
+saveas(gcf, 'fig/change_op_number_reward.fig');
 
 figure;
 plot(number_of_op, time_running);
 xlabel('Number of upload opportunities');
 ylabel('Running time (sec)');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
-savefig('fig/change_op_number_time.fig');
+saveas(gcf, 'fig/change_op_number_time.fig');
 
 save('mat/change_op_number.mat')

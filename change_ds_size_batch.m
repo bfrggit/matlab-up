@@ -14,7 +14,7 @@ randn('state', 0); %#ok<RAND>
 N_DS = 30;
 DX_MU = 180;
 DX_SIGMA = 60;
-R_0 = 1000;
+R_0 = 1500;
 DD_M = 60;
 
 % Constants for OP
@@ -101,13 +101,13 @@ plot(size_of_ds, reward_total);
 xlabel('Size of one single data chunk (kB)');
 ylabel('Weighted overall utility');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
-savefig('fig/change_ds_size_reward.fig');
+saveas(gcf, 'fig/change_ds_size_reward.fig');
 
 figure;
 plot(size_of_ds, time_running);
 xlabel('Size of one single data chunk (kB)');
 ylabel('Running time (sec)');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
-savefig('fig/change_ds_size_time.fig');
+saveas(gcf, 'fig/change_ds_size_time.fig');
 
 save('mat/change_ds_size.mat')
