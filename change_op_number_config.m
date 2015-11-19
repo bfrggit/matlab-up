@@ -11,23 +11,25 @@ rand('state', 0); %#ok<RAND>
 randn('state', 0); %#ok<RAND>
 
 % Constants for DS
-N_DS = 20;
-DX_MU = 270;
-DX_SIGMA = 90;
+N_DS = 10;
+DX_MU = 540;
+DX_SIGMA = 120;
 R_0 = 1500;
 S_0 = 5000;
-DD_M = 60;
+DD_M = 120;
+DX_MIN_DS = 180;
 
 % Constants for OP
 LENGTH = 6000;
 ER_MU = 500;
 ER_SIGMA = 250;
 ER_MIN = 25;
+DX_MIN_OP = 200;
 
 % Constants
-N_LOOP = 10;
+N_LOOP = 2;
 
-number_of_op = (2:2:24)';
+number_of_op = (5:5:15)';
 dxs_m = LENGTH./ number_of_op;
 nm_op = size(number_of_op, 1);
 loop_n = N_LOOP * nm_op;
@@ -51,8 +53,8 @@ for j = 1:nm_op
         mkdir(sprintf('config/change_op_number/%d', number_of_op(j)), sprintf('case_%d', k));
         
         % Generate demo instances
-        v_ds = mk_vec_ds(N_DS, DX_MU, DX_SIGMA, R_0, S_0, DD_M);
-        v_op = mk_vec_op(number_of_op(j), dxs_m(j), ER_MU, ER_SIGMA, ER_MIN);
+        v_ds = mk_vec_ds_min(N_DS, DX_MU, DX_SIGMA, R_0, S_0, DD_M, DX_MIN_DS);
+        v_op = mk_vec_op_min(number_of_op(j), dxs_m(j), ER_MU, ER_SIGMA, ER_MIN, DX_MIN_OP);
         
         % Write to scenario configuration file
         fh = fopen(sprintf('config/change_op_number/%d/case_%d/case.up.deployment', number_of_op(j), k), 'w');
