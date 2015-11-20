@@ -28,7 +28,7 @@ ER_MIN = 25;
 % Constants
 N_LOOP = 50;
 
-deadline_offset_of_ds = (0:10:180)';
+deadline_offset_of_ds = (0:10:190)';
 nm_ds = size(deadline_offset_of_ds, 1);
 loop_n = N_LOOP * nm_ds;
 reward_total = zeros(nm_ds, 3);
