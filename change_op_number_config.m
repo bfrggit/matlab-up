@@ -11,13 +11,13 @@ rand('state', 0); %#ok<RAND>
 randn('state', 0); %#ok<RAND>
 
 % Constants for DS
-N_DS = 10;
-DX_MU = 540;
-DX_SIGMA = 120;
+N_DS = 20;
+DX_MU = 270;
+DX_SIGMA = 60;
 R_0 = 1500;
 S_0 = 5000;
 DD_M = 120;
-DX_MIN_DS = 180;
+DX_MIN_DS = 90;
 
 % Constants for OP
 LENGTH = 6000;
