@@ -14,7 +14,7 @@ global P_DIST;
 p_cus = cumsum(P_DIST(:, 2));
 p_val = P_DIST(:, 1);
 
-dx = min(round(normrnd(dx_mu, dx_sigma, n_ds, 1)), dx_min);
+dx = max(round(normrnd(dx_mu, dx_sigma, n_ds, 1)), dx_min);
 x = cumsum(dx);
 r = repmat(r_0, n_ds, 1);
 s = repmat(s_0, n_ds, 1);
