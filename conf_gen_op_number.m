@@ -149,14 +149,14 @@ for j = 1:nm_op
     time_running(j, 3) = et_plan3 / N_LOOP;
 end
 toc
-plot(number_of_op, reward_total);
+plot(number_of_op, reward_total(:, 1), number_of_op, reward_total(:, 2), '-*', number_of_op, reward_total(:, 3), '-o');
 xlabel('Number of upload opportunities');
 ylabel('Weighted overall utility');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
 saveas(gcf, 'fig/conf_op_number_reward.fig');
 
 figure;
-plot(number_of_op, time_running);
+plot(number_of_op, time_running(:, 1), number_of_op, time_running(:, 2), '-*', number_of_op, time_running(:, 3), '-o');
 xlabel('Number of upload opportunities');
 ylabel('Running time (sec)');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');

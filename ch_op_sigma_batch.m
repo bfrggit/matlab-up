@@ -98,14 +98,14 @@ for j = 1:nm_op
     time_running(j, 3) = et_plan3 / N_LOOP;
 end
 toc
-plot(sigma_rate_of_op, reward_total);
+plot(sigma_rate_of_op, reward_total(:, 1), sigma_rate_of_op, reward_total(:, 2), '-*', sigma_rate_of_op, reward_total(:, 3), '-o');
 xlabel('Standard deviation of bandwidth of upload opportunities (kB/s)');
 ylabel('Weighted overall utility');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
 saveas(gcf, 'fig/ch_op_sigma_reward.fig');
 
 figure;
-plot(sigma_rate_of_op, time_running);
+plot(sigma_rate_of_op, time_running(:, 1), sigma_rate_of_op, time_running(:, 2), '-*', sigma_rate_of_op, time_running(:, 3), '-o');
 xlabel('Standard deviation of bandwidth of upload opportunities (kB/s)');
 ylabel('Running time (sec)');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');

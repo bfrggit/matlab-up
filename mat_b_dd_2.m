@@ -9,10 +9,14 @@ n_ds = size(s_dd, 1);
 %triangle = (repmat(seq, n_ds, 1) < repmat(seq', 1, n_ds)) + eye(n_ds);
 h_deadline = v_ds(:, 4);
 h_priority = v_ds(:, 5);
+h_num = (1:1:n_ds)';
+
 td_ds = repmat(h_deadline, 1, n_ds) > repmat(h_deadline', n_ds, 1);
+tddds = repmat(h_deadline, 1, n_ds) == repmat(h_deadline', n_ds, 1);
 tp_ds = repmat(h_priority, 1, n_ds) < repmat(h_priority', n_ds, 1);
 tppds = repmat(h_priority, 1, n_ds) == repmat(h_priority', n_ds, 1);
-ret = ((tp_ds | tppds & td_ds) & s_dd) + eye(n_ds);
+tn_ds = repmat(h_num, 1, n_ds) < repmat(h_num', n_ds, 1);
+ret = ((tp_ds | tppds & (td_ds | tddds & tn_ds)) & s_dd) + eye(n_ds);
 
 end
 

@@ -99,14 +99,14 @@ for j = 1:nm_ds
     time_running(j, 3) = et_plan3 / N_LOOP;
 end
 toc
-plot(deadline_offset_of_ds, reward_total);
+plot(deadline_offset_of_ds, reward_total(:, 1), deadline_offset_of_ds, reward_total(:, 2), '-*', deadline_offset_of_ds, reward_total(:, 3), '-o');
 xlabel('Deadline offset of data sites');
 ylabel('Weighted overall utility');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
 saveas(gcf, 'fig/ch_ds_deadline_reward.fig');
 
 figure;
-plot(deadline_offset_of_ds, time_running);
+plot(deadline_offset_of_ds, time_running(:, 1), deadline_offset_of_ds, time_running(:, 2), '-*', deadline_offset_of_ds, time_running(:, 3), '-o');
 xlabel('Deadline offset of data sites');
 ylabel('Running time (sec)');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');

@@ -1,7 +1,6 @@
 % Author: Charles ZHU
 % --
-% Statistics, w/ fixed total amount of data, variable number of DS
-% Batch script
+% Dividing DS into only two OP
 
 init_p;
 
@@ -11,29 +10,25 @@ rand('state', 0); %#ok<RAND>
 randn('state', 0); %#ok<RAND>
 
 % Constants for DS
+N_DS = 100;
+X_0 = 1000;
 R_0 = 1500;
-DD_M = 60;
-TOTAL_SIZE = 150000;
-LENGTH = 5400;
+S_0 = 5000;
+p_cus = cumsum(P_DIST(:, 2));
+p_val = P_DIST(:, 1);
 
 % Constants for OP
-N_OP = 20;
-DX_M = 300;
-ER_MU = 500;
-ER_SIGMA = 250;
-ER_MIN = 25;
+V_OP = [2500 50; 3500 500];
 
 % Constants
-N_LOOP = 50;
+N_LOOP = 1;
 
-number_of_ds = (2:2:40)';
-ss_o = TOTAL_SIZE./ number_of_ds;
-dxs_mu = LENGTH./ number_of_ds;
-dxs_sigma = dxs_mu./ 3;
-nm_ds = size(number_of_ds, 1);
+deadline_offset_of_ds = (3100:100:5000)';
+nm_ds = size(deadline_offset_of_ds, 1);
 loop_n = N_LOOP * nm_ds;
 reward_total = zeros(nm_ds, 3);
 time_running = zeros(nm_ds, 3);
+var_u_total = zeros(nm_ds, 3);
 
 tic
 for j = 1:nm_ds
@@ -43,10 +38,16 @@ for j = 1:nm_ds
     et_plan1 = 0.0;
     et_plan2 = 0.0;
     et_plan3 = 0.0;
+    u1_total = 0.0;
+    u2_total = 0.0;
+    u3_total = 0.0;
     for k = 1:N_LOOP
         % Generate demo instances
-        v_ds = mk_vec_ds(number_of_ds(j), dxs_mu(j), dxs_sigma(j), R_0, ss_o(j), DD_M);
-        v_op = mk_vec_op(N_OP, DX_M, ER_MU, ER_SIGMA, ER_MIN);
+        v_ds = repmat([X_0 R_0 S_0 deadline_offset_of_ds(j) 0], N_DS, 1);
+        v_op = V_OP;
+        for x = 1:N_DS
+            v_ds(x, 5) = p_val(sum(p_cus <= rand()) + 1);
+        end
         
         loop_j = k + (j - 1)* N_LOOP;
         fprintf(sprintf('Running loop %d of %d...\n', loop_j, loop_n));
@@ -62,6 +63,8 @@ for j = 1:nm_ds
         
         rw1 = reward(v_ds, v_f);
         rw1_total = rw1_total + rw1;
+        u1 = sum(ls == 1);
+        u1_total = u1_total + u1;
         
         % Algorithm 4 planning
         et = cputime;
@@ -74,6 +77,8 @@ for j = 1:nm_ds
         
         rw2 = reward(v_ds, v_f);
         rw2_total = rw2_total + rw2;
+        u2 = sum(ls == 1);
+        u2_total = u2_total + u2;
         
         % ASAP planning
         [cst_m, cst_ls] = plan_asap(v_ds, v_op);
@@ -90,6 +95,8 @@ for j = 1:nm_ds
         
         rw3 = reward(v_ds, v_f);
         rw3_total = rw3_total + rw3;
+        u3 = sum(ls == 1);
+        u3_total = u3_total + u3;
     end
     reward_total(j, 1) = rw1_total / N_LOOP;
     reward_total(j, 2) = rw2_total / N_LOOP;
@@ -97,19 +104,29 @@ for j = 1:nm_ds
     time_running(j, 1) = et_plan1 / N_LOOP;
     time_running(j, 2) = et_plan2 / N_LOOP;
     time_running(j, 3) = et_plan3 / N_LOOP;
+    var_u_total(j, 1) = u1 / N_LOOP;
+    var_u_total(j, 2) = u2 / N_LOOP;
+    var_u_total(j, 3) = u3 / N_LOOP;
 end
 toc
-plot(number_of_ds, reward_total(:, 1), number_of_ds, reward_total(:, 2), '-*', number_of_ds, reward_total(:, 3), '-o');
-xlabel('Number of data sites');
+plot(deadline_offset_of_ds, reward_total(:, 1), deadline_offset_of_ds, reward_total(:, 2), '-*', deadline_offset_of_ds, reward_total(:, 3), '-o');
+xlabel('Deadline offset of data sites');
 ylabel('Weighted overall utility');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
-saveas(gcf, 'fig/ch_ds_number_reward.fig');
+saveas(gcf, 'fig/div_ds_deadline_reward.fig');
 
 figure;
-plot(number_of_ds, time_running(:, 1), number_of_ds, time_running(:, 2), '-*', number_of_ds, time_running(:, 3), '-o');
-xlabel('Number of data sites');
+plot(deadline_offset_of_ds, time_running(:, 1), deadline_offset_of_ds, time_running(:, 2), '-*', deadline_offset_of_ds, time_running(:, 3), '-o');
+xlabel('Deadline offset of data sites');
 ylabel('Running time (sec)');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
-saveas(gcf, 'fig/ch_ds_number_time.fig');
+saveas(gcf, 'fig/div_ds_deadline_time.fig');
 
-save('mat/ch_ds_number.mat')
+figure;
+plot(deadline_offset_of_ds, var_u_total(:, 1), deadline_offset_of_ds, var_u_total(:, 2), '-*', deadline_offset_of_ds, var_u_total(:, 3), '-o');
+xlabel('Deadline offset of data sites');
+ylabel('Number of data chunks planned at first opportunity');
+legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+saveas(gcf, 'fig/div_ds_deadline_var_u.fig');
+
+save('mat/div_ds_deadline.mat')

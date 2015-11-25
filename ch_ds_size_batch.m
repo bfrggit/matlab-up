@@ -97,14 +97,14 @@ for j = 1:nm_ds
     time_running(j, 3) = et_plan3 / N_LOOP;
 end
 toc
-plot(size_of_ds, reward_total);
+plot(size_of_ds, reward_total(:, 1), size_of_ds, reward_total(:, 2), '-*', size_of_ds, reward_total(:, 3), '-o');
 xlabel('Size of one single data chunk (kB)');
 ylabel('Weighted overall utility');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
 saveas(gcf, 'fig/ch_ds_size_reward.fig');
 
 figure;
-plot(size_of_ds, time_running);
+plot(size_of_ds, time_running(:, 1), size_of_ds, time_running(:, 2), '-*', size_of_ds, time_running(:, 3), '-o');
 xlabel('Size of one single data chunk (kB)');
 ylabel('Running time (sec)');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
