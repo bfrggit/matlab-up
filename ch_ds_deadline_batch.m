@@ -1,6 +1,6 @@
 % Author: Charles ZHU
 % --
-% Statistics, w/ fixed total amount of data, variable number of DS
+% Statistics, w/ fixed number of DS, variable deadline offset of DS
 % Batch script
 
 init_p;
@@ -11,10 +11,12 @@ rand('state', 0); %#ok<RAND>
 randn('state', 0); %#ok<RAND>
 
 % Constants for DS
+N_DS = 30;
+DX_MU = 180;
+DX_SIGMA = 60;
 R_0 = 1500;
+S_0 = 5000;
 DD_M = 60;
-TOTAL_SIZE = 150000;
-LENGTH = 5400;
 
 % Constants for OP
 N_OP = 20;
@@ -26,11 +28,8 @@ ER_MIN = 25;
 % Constants
 N_LOOP = 50;
 
-number_of_ds = (2:2:40)';
-ss_o = TOTAL_SIZE./ number_of_ds;
-dxs_mu = LENGTH./ number_of_ds;
-dxs_sigma = dxs_mu./ 3;
-nm_ds = size(number_of_ds, 1);
+deadline_offset_of_ds = (0:10:190)';
+nm_ds = size(deadline_offset_of_ds, 1);
 loop_n = N_LOOP * nm_ds;
 reward_total = zeros(nm_ds, 3);
 time_running = zeros(nm_ds, 3);
@@ -45,8 +44,9 @@ for j = 1:nm_ds
     et_plan3 = 0.0;
     for k = 1:N_LOOP
         % Generate demo instances
-        v_ds = mk_vec_ds(number_of_ds(j), dxs_mu(j), dxs_sigma(j), R_0, ss_o(j), DD_M);
+        v_ds = mk_vec_ds(N_DS, DX_MU, DX_SIGMA, R_0, S_0, DD_M);
         v_op = mk_vec_op(N_OP, DX_M, ER_MU, ER_SIGMA, ER_MIN);
+        v_ds(:, 4) = v_ds(:, 4) + deadline_offset_of_ds(j);
         
         loop_j = k + (j - 1)* N_LOOP;
         fprintf(sprintf('Running loop %d of %d...\n', loop_j, loop_n));
@@ -99,17 +99,17 @@ for j = 1:nm_ds
     time_running(j, 3) = et_plan3 / N_LOOP;
 end
 toc
-plot(number_of_ds, reward_total);
-xlabel('Number of data sites');
+plot(deadline_offset_of_ds, reward_total);
+xlabel('Deadline offset of data sites');
 ylabel('Weighted overall utility');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
-saveas(gcf, 'fig/change_ds_number_reward.fig');
+saveas(gcf, 'fig/ch_ds_deadline_reward.fig');
 
 figure;
-plot(number_of_ds, time_running);
-xlabel('Number of data sites');
+plot(deadline_offset_of_ds, time_running);
+xlabel('Deadline offset of data sites');
 ylabel('Running time (sec)');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
-saveas(gcf, 'fig/change_ds_number_time.fig');
+saveas(gcf, 'fig/ch_ds_deadline_time.fig');
 
-save('mat/change_ds_number.mat')
+save('mat/ch_ds_deadline.mat')

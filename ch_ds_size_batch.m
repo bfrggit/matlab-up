@@ -1,6 +1,6 @@
 % Author: Charles ZHU
 % --
-% Statistics, w/ fixed path length, variable number of OP
+% Statistics, w/ fixed number of DS, variable size of DS
 % Batch script
 
 init_p;
@@ -15,11 +15,11 @@ N_DS = 30;
 DX_MU = 180;
 DX_SIGMA = 60;
 R_0 = 1500;
-S_0 = 5000;
 DD_M = 60;
 
 % Constants for OP
-LENGTH = 6000;
+N_OP = 20;
+DX_M = 300;
 ER_MU = 500;
 ER_SIGMA = 250;
 ER_MIN = 25;
@@ -27,15 +27,14 @@ ER_MIN = 25;
 % Constants
 N_LOOP = 50;
 
-number_of_op = (5:5:100)';
-dxs_m = LENGTH./ number_of_op;
-nm_op = size(number_of_op, 1);
-loop_n = N_LOOP * nm_op;
-reward_total = zeros(nm_op, 3);
-time_running = zeros(nm_op, 3);
+size_of_ds = (500:500:10000)';
+nm_ds = size(size_of_ds, 1);
+loop_n = N_LOOP * nm_ds;
+reward_total = zeros(nm_ds, 3);
+time_running = zeros(nm_ds, 3);
 
 tic
-for j = 1:nm_op
+for j = 1:nm_ds
     rw1_total = 0.0;
     rw2_total = 0.0;
     rw3_total = 0.0;
@@ -44,8 +43,8 @@ for j = 1:nm_op
     et_plan3 = 0.0;
     for k = 1:N_LOOP
         % Generate demo instances
-        v_ds = mk_vec_ds(N_DS, DX_MU, DX_SIGMA, R_0, S_0, DD_M);
-        v_op = mk_vec_op(number_of_op(j), dxs_m(j), ER_MU, ER_SIGMA, ER_MIN);
+        v_ds = mk_vec_ds(N_DS, DX_MU, DX_SIGMA, R_0, size_of_ds(j), DD_M);
+        v_op = mk_vec_op(N_OP, DX_M, ER_MU, ER_SIGMA, ER_MIN);
         
         loop_j = k + (j - 1)* N_LOOP;
         fprintf(sprintf('Running loop %d of %d...\n', loop_j, loop_n));
@@ -98,17 +97,17 @@ for j = 1:nm_op
     time_running(j, 3) = et_plan3 / N_LOOP;
 end
 toc
-plot(number_of_op, reward_total);
-xlabel('Number of upload opportunities');
+plot(size_of_ds, reward_total);
+xlabel('Size of one single data chunk (kB)');
 ylabel('Weighted overall utility');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
-saveas(gcf, 'fig/change_op_number_reward.fig');
+saveas(gcf, 'fig/ch_ds_size_reward.fig');
 
 figure;
-plot(number_of_op, time_running);
-xlabel('Number of upload opportunities');
+plot(size_of_ds, time_running);
+xlabel('Size of one single data chunk (kB)');
 ylabel('Running time (sec)');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
-saveas(gcf, 'fig/change_op_number_time.fig');
+saveas(gcf, 'fig/ch_ds_size_time.fig');
 
-save('mat/change_op_number.mat')
+save('mat/ch_ds_size.mat')

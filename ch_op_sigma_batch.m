@@ -102,13 +102,13 @@ plot(sigma_rate_of_op, reward_total);
 xlabel('Standard deviation of bandwidth of upload opportunities (kB/s)');
 ylabel('Weighted overall utility');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
-saveas(gcf, 'fig/change_op_sigma_reward.fig');
+saveas(gcf, 'fig/ch_op_sigma_reward.fig');
 
 figure;
 plot(sigma_rate_of_op, time_running);
 xlabel('Standard deviation of bandwidth of upload opportunities (kB/s)');
 ylabel('Running time (sec)');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
-saveas(gcf, 'fig/change_op_sigma_time.fig');
+saveas(gcf, 'fig/ch_op_sigma_time.fig');
 
-save('mat/change_op_sigma.mat')
+save('mat/ch_op_sigma.mat')

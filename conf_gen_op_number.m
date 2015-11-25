@@ -16,7 +16,7 @@ DX_MU = 180;
 DX_SIGMA = 40;
 R_0 = 1500;
 S_0 = 5000;
-DD_M = 120;
+DD_M = 60;
 DX_MIN_DS = 60;
 
 % Constants for OP
@@ -27,7 +27,7 @@ ER_MIN = 25;
 DX_MIN_OP = 200;
 
 % Constants
-N_LOOP = 2;
+N_LOOP = 20;
 
 number_of_op = (3:3:15)';
 dxs_m = LENGTH./ number_of_op;
@@ -153,13 +153,13 @@ plot(number_of_op, reward_total);
 xlabel('Number of upload opportunities');
 ylabel('Weighted overall utility');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
-saveas(gcf, 'fig/conf_gen_op_number_reward.fig');
+saveas(gcf, 'fig/conf_op_number_reward.fig');
 
 figure;
 plot(number_of_op, time_running);
 xlabel('Number of upload opportunities');
 ylabel('Running time (sec)');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
-saveas(gcf, 'fig/conf_gen_op_number_time.fig');
+saveas(gcf, 'fig/conf_op_number_time.fig');
 
-save('mat/conf_gen_op_number_.mat')
+save('mat/conf_op_number_.mat')
