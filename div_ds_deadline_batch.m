@@ -23,24 +23,18 @@ V_OP = [2500 50; 3500 500];
 % Constants
 N_LOOP = 1;
 
-deadline_offset_of_ds = (3100:100:5000)';
+deadline_offset_of_ds = (3050:50:5500)';
 nm_ds = size(deadline_offset_of_ds, 1);
 loop_n = N_LOOP * nm_ds;
-reward_total = zeros(nm_ds, 3);
-time_running = zeros(nm_ds, 3);
-var_u_total = zeros(nm_ds, 3);
+reward_total = zeros(nm_ds, 4);
+time_running = zeros(nm_ds, 4);
+var_u_total = zeros(nm_ds, 4);
 
 tic
 for j = 1:nm_ds
-    rw1_total = 0.0;
-    rw2_total = 0.0;
-    rw3_total = 0.0;
-    et_plan1 = 0.0;
-    et_plan2 = 0.0;
-    et_plan3 = 0.0;
-    u1_total = 0.0;
-    u2_total = 0.0;
-    u3_total = 0.0;
+    rw1_total = 0.0; rw2_total = 0.0; rw3_total = 0.0; rw4_total = 0.0;
+    et_plan1 = 0.0; et_plan2 = 0.0; et_plan3 = 0.0; et_plan4 = 0.0;
+    u1_total = 0.0; u2_total = 0.0; u3_total = 0.0; u4_total = 0.0;
     for k = 1:N_LOOP
         % Generate demo instances
         v_ds = repmat([X_0 R_0 S_0 deadline_offset_of_ds(j) 0], N_DS, 1);
@@ -65,6 +59,20 @@ for j = 1:nm_ds
         rw1_total = rw1_total + rw1;
         u1 = sum(ls == 1);
         u1_total = u1_total + u1;
+        
+        % Last opportunity planning
+        et = cputime;
+        [mat_m, ls] = plan_last(v_ds, v_op);
+        et_plan4 = et_plan4 + (cputime - et);
+
+        % Calculate actual upload time
+        t_up = vec_t_up(v_ds, v_op, mat_m, T_WAIT);
+        v_f = vec_f(v_ds, t_up);
+        
+        rw4 = reward(v_ds, v_f);
+        rw4_total = rw4_total + rw4;
+        u4 = sum(ls == 1);
+        u4_total = u4_total + u4;
         
         % Algorithm 4 planning
         et = cputime;
@@ -109,21 +117,21 @@ for j = 1:nm_ds
     var_u_total(j, 3) = u3 / N_LOOP;
 end
 toc
-plot(deadline_offset_of_ds, reward_total(:, 1), deadline_offset_of_ds, reward_total(:, 2), '-*', deadline_offset_of_ds, reward_total(:, 3), '-o');
+plot(deadline_offset_of_ds, reward_total(:, 1), deadline_offset_of_ds, reward_total(:, 2), '-*', deadline_offset_of_ds, reward_total(:, 3), '-o', deadline_offset_of_ds, reward_total(:, 4), '--');
 xlabel('Deadline offset of data sites');
 ylabel('Weighted overall utility');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
 saveas(gcf, 'fig/div_ds_deadline_reward.fig');
 
 figure;
-plot(deadline_offset_of_ds, time_running(:, 1), deadline_offset_of_ds, time_running(:, 2), '-*', deadline_offset_of_ds, time_running(:, 3), '-o');
+plot(deadline_offset_of_ds, time_running(:, 1), deadline_offset_of_ds, time_running(:, 2), '-*', deadline_offset_of_ds, time_running(:, 3), '-o', deadline_offset_of_ds, time_running(:, 4), '--');
 xlabel('Deadline offset of data sites');
 ylabel('Running time (sec)');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
 saveas(gcf, 'fig/div_ds_deadline_time.fig');
 
 figure;
-plot(deadline_offset_of_ds, var_u_total(:, 1), deadline_offset_of_ds, var_u_total(:, 2), '-*', deadline_offset_of_ds, var_u_total(:, 3), '-o');
+plot(deadline_offset_of_ds, var_u_total(:, 1), deadline_offset_of_ds, var_u_total(:, 2), '-*', deadline_offset_of_ds, var_u_total(:, 3), '-o', deadline_offset_of_ds, var_u_total(:, 4), '--');
 xlabel('Deadline offset of data sites');
 ylabel('Number of data chunks planned at first opportunity');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
