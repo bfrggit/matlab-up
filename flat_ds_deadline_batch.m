@@ -1,8 +1,10 @@
 % Author: Charles ZHU
 % --
-% Dividing DS into only two OP
+% Dividing DS into only two OP, flat and variable deadline of DS
 
 init_p;
+
+global INF_PSEUDO;
 
 % Initialize environment
 clc;
@@ -18,7 +20,7 @@ p_cus = cumsum(P_DIST(:, 2));
 p_val = P_DIST(:, 1);
 
 % Constants for OP
-V_OP = [2500 50; 3500 500];
+V_OP = [2500 50; 3500 500; INF_PSEUDO INF_PSEUDO];
 
 % Constants
 N_LOOP = 1;
@@ -124,20 +126,20 @@ plot(deadline_offset_of_ds, reward_total(:, 1), deadline_offset_of_ds, reward_to
 xlabel('Deadline offset of data sites');
 ylabel('Weighted overall utility');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm', 'Last opportunity');
-saveas(gcf, 'fig/div_ds_deadline_reward.fig');
+saveas(gcf, 'fig/flat_ds_deadline_reward.fig');
 
 figure;
 plot(deadline_offset_of_ds, time_running(:, 1), deadline_offset_of_ds, time_running(:, 2), '-*', deadline_offset_of_ds, time_running(:, 3), '-o', deadline_offset_of_ds, time_running(:, 4), '--x');
 xlabel('Deadline offset of data sites');
 ylabel('Running time (sec)');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm', 'Last opportunity');
-saveas(gcf, 'fig/div_ds_deadline_time.fig');
+saveas(gcf, 'fig/flat_ds_deadline_time.fig');
 
 figure;
 plot(deadline_offset_of_ds, var_u_total(:, 1), deadline_offset_of_ds, var_u_total(:, 2), '-*', deadline_offset_of_ds, var_u_total(:, 3), '-o', deadline_offset_of_ds, var_u_total(:, 4), '--x');
 xlabel('Deadline offset of data sites');
 ylabel('Number of data chunks planned at first opportunity');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm', 'Last opportunity');
-saveas(gcf, 'fig/div_ds_deadline_var_u.fig');
+saveas(gcf, 'fig/flat_ds_deadline_var_u.fig');
 
-save('mat/div_ds_deadline.mat')
+save('mat/flat_ds_deadline.mat')
