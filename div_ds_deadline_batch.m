@@ -109,32 +109,35 @@ for j = 1:nm_ds
     reward_total(j, 1) = rw1_total / N_LOOP;
     reward_total(j, 2) = rw2_total / N_LOOP;
     reward_total(j, 3) = rw3_total / N_LOOP;
+    reward_total(j, 4) = rw4_total / N_LOOP;
     time_running(j, 1) = et_plan1 / N_LOOP;
     time_running(j, 2) = et_plan2 / N_LOOP;
     time_running(j, 3) = et_plan3 / N_LOOP;
+    time_running(j, 4) = et_plan4 / N_LOOP;
     var_u_total(j, 1) = u1 / N_LOOP;
     var_u_total(j, 2) = u2 / N_LOOP;
     var_u_total(j, 3) = u3 / N_LOOP;
+    var_u_total(j, 4) = u4 / N_LOOP;
 end
 toc
-plot(deadline_offset_of_ds, reward_total(:, 1), deadline_offset_of_ds, reward_total(:, 2), '-*', deadline_offset_of_ds, reward_total(:, 3), '-o', deadline_offset_of_ds, reward_total(:, 4), '--');
+plot(deadline_offset_of_ds, reward_total(:, 1), deadline_offset_of_ds, reward_total(:, 2), '-*', deadline_offset_of_ds, reward_total(:, 3), '-o', deadline_offset_of_ds, reward_total(:, 4), '--x');
 xlabel('Deadline offset of data sites');
 ylabel('Weighted overall utility');
-legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm', 'Last opportunity');
 saveas(gcf, 'fig/div_ds_deadline_reward.fig');
 
 figure;
-plot(deadline_offset_of_ds, time_running(:, 1), deadline_offset_of_ds, time_running(:, 2), '-*', deadline_offset_of_ds, time_running(:, 3), '-o', deadline_offset_of_ds, time_running(:, 4), '--');
+plot(deadline_offset_of_ds, time_running(:, 1), deadline_offset_of_ds, time_running(:, 2), '-*', deadline_offset_of_ds, time_running(:, 3), '-o', deadline_offset_of_ds, time_running(:, 4), '--x');
 xlabel('Deadline offset of data sites');
 ylabel('Running time (sec)');
-legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm', 'Last opportunity');
 saveas(gcf, 'fig/div_ds_deadline_time.fig');
 
 figure;
-plot(deadline_offset_of_ds, var_u_total(:, 1), deadline_offset_of_ds, var_u_total(:, 2), '-*', deadline_offset_of_ds, var_u_total(:, 3), '-o', deadline_offset_of_ds, var_u_total(:, 4), '--');
+plot(deadline_offset_of_ds, var_u_total(:, 1), deadline_offset_of_ds, var_u_total(:, 2), '-*', deadline_offset_of_ds, var_u_total(:, 3), '-o', deadline_offset_of_ds, var_u_total(:, 4), '--x');
 xlabel('Deadline offset of data sites');
 ylabel('Number of data chunks planned at first opportunity');
-legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm', 'Last opportunity');
 saveas(gcf, 'fig/div_ds_deadline_var_u.fig');
 
 save('mat/div_ds_deadline.mat')
