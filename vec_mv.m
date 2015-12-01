@@ -9,8 +9,9 @@ x_com = [
     v_op(:, 1)
     ];
 x_srt = sort(x_com);
-x_dif = x_srt(2:end) - x_srt(1:end - 1);
-ret = [x_srt(1:end - 1) x_dif];
+x_srt_shift = [0; x_srt(1:end - 1)];
+x_dif = [x_srt(1); x_srt(2:end) - x_srt(1:end - 1)];
+ret = [x_srt_shift x_dif];
 
 end
 
