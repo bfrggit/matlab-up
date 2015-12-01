@@ -16,7 +16,8 @@ N_DS = 100;
 X_0 = 1000;
 R_0 = 1500;
 S_0 = 5000;
-P_0 = 0.6;
+p_cus = cumsum(P_DIST(:, 2));
+p_val = P_DIST(:, 1);
 
 % Constants for OP
 V_OP = [2500 50; 3500 500; INF_PSEUDO INF_PSEUDO];
@@ -24,7 +25,7 @@ V_OP = [2500 50; 3500 500; INF_PSEUDO INF_PSEUDO];
 % Constants
 N_LOOP = 1;
 
-deadline_offset_of_ds = (3050:50:5500)';
+deadline_offset_of_ds = (1550:50:4000)';
 nm_ds = size(deadline_offset_of_ds, 1);
 loop_n = N_LOOP * nm_ds;
 reward_total = zeros(nm_ds, 4);
