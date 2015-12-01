@@ -1,6 +1,6 @@
 % Author: Charles ZHU
 % --
-% Dividing DS into only two OP, flat and variable deadline of DS
+% Dividing DS into only two OP, flat priority, variable deadline offset
 
 init_p;
 
@@ -17,6 +17,7 @@ X_0 = 1000;
 R_0 = 1500;
 S_0 = 5000;
 P_0 = 0.6;
+D_DIFF = 1000;
 
 % Constants for OP
 V_OP = [2500 50; 3500 500; INF_PSEUDO INF_PSEUDO];
@@ -25,6 +26,7 @@ V_OP = [2500 50; 3500 500; INF_PSEUDO INF_PSEUDO];
 N_LOOP = 1;
 
 deadline_offset_of_ds = (3050:50:5500)';
+deadline_var_of_ds = ((-D_DIFF + 2 * D_DIFF / N_DS):(2 * D_DIFF/N_DS):D_DIFF)';
 nm_ds = size(deadline_offset_of_ds, 1);
 loop_n = N_LOOP * nm_ds;
 reward_total = zeros(nm_ds, 4);
@@ -38,11 +40,9 @@ for j = 1:nm_ds
     u1_total = 0.0; u2_total = 0.0; u3_total = 0.0; u4_total = 0.0;
     for k = 1:N_LOOP
         % Generate demo instances
-        v_ds = repmat([X_0 R_0 S_0 deadline_offset_of_ds(j) 0], N_DS, 1);
+        v_ds = repmat([X_0 R_0 S_0 deadline_offset_of_ds(j) P_0], N_DS, 1);
         v_op = V_OP;
-        for x = 1:N_DS
-            v_ds(x, 5) = p_val(sum(p_cus <= rand()) + 1);
-        end
+        v_ds(:, 4) = v_ds(:, 4) + deadline_var_of_ds;
         
         loop_j = k + (j - 1)* N_LOOP;
         fprintf(sprintf('Running loop %d of %d...\n', loop_j, loop_n));
@@ -125,20 +125,20 @@ plot(deadline_offset_of_ds, reward_total(:, 1), deadline_offset_of_ds, reward_to
 xlabel('Deadline offset of data sites');
 ylabel('Weighted overall utility');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm', 'Last opportunity');
-saveas(gcf, 'fig/flat_ds_deadline_reward.fig');
+saveas(gcf, 'fig/flat_ds_priority_reward.fig');
 
 figure;
 plot(deadline_offset_of_ds, time_running(:, 1), deadline_offset_of_ds, time_running(:, 2), '-*', deadline_offset_of_ds, time_running(:, 3), '-o', deadline_offset_of_ds, time_running(:, 4), '--x');
 xlabel('Deadline offset of data sites');
 ylabel('Running time (sec)');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm', 'Last opportunity');
-saveas(gcf, 'fig/flat_ds_deadline_time.fig');
+saveas(gcf, 'fig/flat_ds_priority_time.fig');
 
 figure;
 plot(deadline_offset_of_ds, var_u_total(:, 1), deadline_offset_of_ds, var_u_total(:, 2), '-*', deadline_offset_of_ds, var_u_total(:, 3), '-o', deadline_offset_of_ds, var_u_total(:, 4), '--x');
 xlabel('Deadline offset of data sites');
 ylabel('Number of data chunks planned at first opportunity');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm', 'Last opportunity');
-saveas(gcf, 'fig/flat_ds_deadline_var_u.fig');
+saveas(gcf, 'fig/flat_ds_priority_var_u.fig');
 
-save('mat/flat_ds_deadline.mat')
+save('mat/flat_ds_priority.mat')
