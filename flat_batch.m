@@ -24,7 +24,7 @@ V_OP = [2500 50; 3500 500; INF_PSEUDO INF_PSEUDO];
 % Constants
 N_LOOP = 1;
 
-deadline_offset_of_ds = (1550:50:4000)';
+deadline_offset_of_ds = (550:50:3000)';
 nm_ds = size(deadline_offset_of_ds, 1);
 loop_n = N_LOOP * nm_ds;
 reward_total = zeros(nm_ds, 4);
