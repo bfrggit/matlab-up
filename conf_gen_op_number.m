@@ -27,7 +27,7 @@ ER_MIN = 25;
 DX_MIN_OP = 200;
 
 % Constants
-N_LOOP = 20;
+N_LOOP = 10;
 
 number_of_op = (3:3:15)';
 dxs_m = LENGTH./ number_of_op;
