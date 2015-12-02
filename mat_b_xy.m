@@ -5,8 +5,8 @@ function [ret] = mat_b_xy(x, y)
 %   x           X vector
 %   y           Y vector
 
-x_rep = repmat(x, 1, size(y));
-y_rep = repmat(y', size(x), 1);
+x_rep = repmat(x, 1, size(y, 1));
+y_rep = repmat(y', size(x, 1), 1);
 ret = (x_rep > y_rep) + zeros(size(x, 1), size(y, 1));
 
 end
