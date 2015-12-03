@@ -69,7 +69,7 @@ for j = 1:nm_op
         fprintf(fh, '\n');
         fprintf(fh, 'DATA_SITES\n');
         for it_ds = 1:N_DS
-            fprintf(fh, '%d %d %d %.1f\n', v_ds(it_ds, 1), round(v_ds(it_ds, 3) * 1000 / 1024), max([v_ds(it_ds, 4) 1]'), v_ds(it_ds, 5));
+            fprintf(fh, '%d %d %d %.1f\n', v_ds(it_ds, 1), round(v_ds(it_ds, 3) * 1000 / 1024), max([v_ds(it_ds, 4) 1], [], 2), v_ds(it_ds, 5));
         end
         fprintf(fh, '\n');
         fclose(fh);
@@ -96,6 +96,7 @@ for j = 1:nm_op
             fprintf(fh, '%d %d\n', it_ds, ls(it_ds));
         end
         fclose(fh);
+        dlmwrite(sprintf('config/change_op_number/%d/case_%d/asap.txt', number_of_op(j), k), t_up);
         
         % Algorithm 4 planning
         et = cputime;
@@ -116,6 +117,7 @@ for j = 1:nm_op
             fprintf(fh, '%d %d\n', it_ds, ls(it_ds));
         end
         fclose(fh);
+        dlmwrite(sprintf('config/change_op_number/%d/case_%d/alg4.txt', number_of_op(j), k), t_up);
         
         % ASAP planning
         [cst_m, cst_ls] = plan_asap(v_ds, v_op);
@@ -140,6 +142,7 @@ for j = 1:nm_op
             fprintf(fh, '%d %d\n', it_ds, ls(it_ds));
         end
         fclose(fh);
+        dlmwrite(sprintf('config/change_op_number/%d/case_%d/ga.txt', number_of_op(j), k), t_up);
     end
     reward_total(j, 1) = rw1_total / N_LOOP;
     reward_total(j, 2) = rw2_total / N_LOOP;
