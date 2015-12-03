@@ -162,4 +162,4 @@ ylabel('Running time (sec)');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
 saveas(gcf, 'fig/conf_op_number_time.fig');
 
-save('mat/conf_op_number_.mat')
+save('mat/conf_op_number.mat')
