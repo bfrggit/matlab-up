@@ -15,7 +15,7 @@ s_dd = mat_s_dd(mat_m);
 b_dd = mat_b_dd_2(s_dd, v_ds);
 
 v_t1 = vec_t1(b_om, v_mv);
-v_t2 = vec_t2(b_od, v_ds);
+v_t2 = vec_t2(b_od, v_ds, t_wait);
 v_t3 = vec_t3(b_oo, v_op, v_ds, mat_m, t_wait);
 t_all = v_t1 + v_t2 + v_t3;
 v_t4 = vec_t4(b_dd, v_op, v_ds, mat_m, t_wait);

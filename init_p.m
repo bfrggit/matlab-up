@@ -23,7 +23,7 @@ V_MDC = 5;
 % T_WAIT
 %   Time to wait before connection can be established
 global T_WAIT;
-T_WAIT = 5;
+T_WAIT = 10;
 
 % INF_PSEUDO
 %   Pseudo infinity used for last OP (infinitely far OP)
