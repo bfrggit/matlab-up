@@ -12,7 +12,7 @@ randn('state', 0); %#ok<RAND>
 
 % Constants for DS
 R_0 = 1500;
-DD_M = 60;
+DD_M = 80;
 TOTAL_SIZE = 150000;
 LENGTH = 5400;
 

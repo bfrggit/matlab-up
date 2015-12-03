@@ -16,7 +16,7 @@ DX_MU = 180;
 DX_SIGMA = 60;
 R_0 = 1500;
 S_0 = 5000;
-DD_M = 60;
+DD_M = 80;
 
 % Constants for OP
 N_OP = 20;
