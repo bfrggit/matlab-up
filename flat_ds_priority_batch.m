@@ -25,7 +25,7 @@ V_OP = [2500 50; 3500 500; INF_PSEUDO INF_PSEUDO];
 % Constants
 N_LOOP = 1;
 
-deadline_offset_of_ds = (550:50:3000)';
+deadline_offset_of_ds = (1550:50:4000)';
 deadline_var_of_ds = ((-D_DIFF + 2 * D_DIFF / N_DS):(2 * D_DIFF/N_DS):D_DIFF)';
 nm_ds = size(deadline_offset_of_ds, 1);
 loop_n = N_LOOP * nm_ds;
