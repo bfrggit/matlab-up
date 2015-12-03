@@ -96,7 +96,8 @@ for j = 1:nm_op
             fprintf(fh, '%d %d\n', it_ds, ls(it_ds));
         end
         fclose(fh);
-        dlmwrite(sprintf('config/change_op_number/%d/case_%d/asap.txt', number_of_op(j), k), t_up);
+		t_up_sorted = sortrows([(1:N_DS)' t_up], 2);
+        dlmwrite(sprintf('config/change_op_number/%d/case_%d/asap.txt', number_of_op(j), k), t_up_sorted);
         
         % Algorithm 4 planning
         et = cputime;
@@ -117,7 +118,8 @@ for j = 1:nm_op
             fprintf(fh, '%d %d\n', it_ds, ls(it_ds));
         end
         fclose(fh);
-        dlmwrite(sprintf('config/change_op_number/%d/case_%d/alg4.txt', number_of_op(j), k), t_up);
+		t_up_sorted = sortrows([(1:N_DS)' t_up], 2);
+        dlmwrite(sprintf('config/change_op_number/%d/case_%d/alg4.txt', number_of_op(j), k), t_up_sorted);
         
         % ASAP planning
         [cst_m, cst_ls] = plan_asap(v_ds, v_op);
@@ -142,7 +144,8 @@ for j = 1:nm_op
             fprintf(fh, '%d %d\n', it_ds, ls(it_ds));
         end
         fclose(fh);
-        dlmwrite(sprintf('config/change_op_number/%d/case_%d/ga.txt', number_of_op(j), k), t_up);
+		t_up_sorted = sortrows([(1:N_DS)' t_up], 2);
+        dlmwrite(sprintf('config/change_op_number/%d/case_%d/ga.txt', number_of_op(j), k), t_up_sorted);
     end
     reward_total(j, 1) = rw1_total / N_LOOP;
     reward_total(j, 2) = rw2_total / N_LOOP;
