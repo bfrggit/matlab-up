@@ -8,7 +8,7 @@ rand('state', 3); %#ok<RAND>
 randn('state', 3); %#ok<RAND>
 
 % Generate demo instances
-v_ds = mk_vec_ds_new(N_DS, DX_MU, DX_SIGMA, R_0, S_M, S_RANGE, DD_M, D_OFFSET);
+v_ds = mk_vec_ds_new(N_DS, DX_MU, DX_SIGMA, R_0, S_M, S_RANGE, DD_M, D_OFFSET, DD_RANGE);
 v_op = mk_vec_op(N_OP, DX_M, ER_MU, ER_SIGMA, ER_MIN);
 
 % ASAP planning

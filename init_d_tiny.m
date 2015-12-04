@@ -14,6 +14,7 @@ S_M = 5000;
 S_RANGE = 3000;
 DD_M = 80;
 D_OFFSET = 120;
+DD_RANGE = 120;
 
 % Constants for OP
 N_OP = 4;

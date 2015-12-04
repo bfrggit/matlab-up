@@ -1,6 +1,6 @@
 % Author: Charles ZHU
 % --
-% Statistics, w/ fixed path length, variable number of OP
+% Statistics, w/ fixed OP, variable sigma of estimated rate of OP
 % Batch script (tiny version)
 
 init_p;
@@ -22,17 +22,17 @@ D_OFFSET = 120;
 DD_RANGE = 120;
 
 % Constants for OP
-LENGTH = 1600;
+N_OP = 4;
+DX_M = 400;
 ER_MU = 500;
-ER_SIGMA = 250;
+%ER_SIGMA = 250;
 ER_MIN = 25;
 
 % Constants
 N_LOOP = 50;
 
-number_of_op = (2:1:6)';
-dxs_m = LENGTH./ number_of_op;
-nm_op = size(number_of_op, 1);
+sigma_rate_of_op = (0:15:285)';
+nm_op = size(sigma_rate_of_op, 1);
 loop_n = N_LOOP * nm_op;
 reward_total = zeros(nm_op, 4);
 time_running = zeros(nm_op, 4);
@@ -44,7 +44,7 @@ for j = 1:nm_op
     for k = 1:N_LOOP
         % Generate demo instances
         v_ds = mk_vec_ds_new(N_DS, DX_MU, DX_SIGMA, R_0, S_M, S_RANGE, DD_M, D_OFFSET, DD_RANGE);
-        v_op = mk_vec_op(number_of_op(j), dxs_m(j), ER_MU, ER_SIGMA, ER_MIN);
+        v_op = mk_vec_op(N_OP, DX_M, ER_MU, sigma_rate_of_op(j), ER_MIN);
         
         loop_j = k + (j - 1)* N_LOOP;
         fprintf(sprintf('Running loop %d of %d...\n', loop_j, loop_n));
@@ -111,21 +111,21 @@ for j = 1:nm_op
     time_running(j, 4) = et_plan4 / N_LOOP;
 end
 toc
-plot(number_of_op, reward_total(:, 1), number_of_op, reward_total(:, 2), '-*', number_of_op, reward_total(:, 3), '-o');
+plot(sigma_rate_of_op, reward_total(:, 1), sigma_rate_of_op, reward_total(:, 2), '-*', sigma_rate_of_op, reward_total(:, 3), '-o');
 hold on;
-plot(number_of_op, reward_total(:, 4), 'LineWidth', 3);
-xlabel('Number of upload opportunities');
+plot(sigma_rate_of_op, reward_total(:, 4), 'LineWidth', 3);
+xlabel('Standard deviation of bandwidth of upload opportunities (kB/s)');
 ylabel('Weighted overall utility');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm', 'Brute force');
-saveas(gcf, 'fig/tiny_op_number_reward.fig');
+saveas(gcf, 'fig/tiny_op_sigma_reward.fig');
 
 figure;
-plot(number_of_op, time_running(:, 1), number_of_op, time_running(:, 2), '-*', number_of_op, time_running(:, 3), '-o');
+plot(sigma_rate_of_op, time_running(:, 1), sigma_rate_of_op, time_running(:, 2), '-*', sigma_rate_of_op, time_running(:, 3), '-o');
 hold on;
-plot(number_of_op, time_running(:, 1), 'LineWidth', 3);
-xlabel('Number of upload opportunities');
+plot(sigma_rate_of_op, time_running(:, 1), 'LineWidth', 3);
+xlabel('Standard deviation of bandwidth of upload opportunities (kB/s)');
 ylabel('Running time (sec)');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm', 'Brute force');
-saveas(gcf, 'fig/tiny_op_number_time.fig');
+saveas(gcf, 'fig/tiny_op_sigma_time.fig');
 
-save('mat/tiny_op_number.mat')
+save('mat/tiny_op_sigma.mat')

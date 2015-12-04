@@ -1,4 +1,4 @@
-function [ret] = mk_vec_ds_new(n_ds, dx_mu, dx_sigma, r_0, s_mid, s_range, dd_mid, d_offset)
+function [ret] = mk_vec_ds_new(n_ds, dx_mu, dx_sigma, r_0, s_mid, s_range, dd_mid, d_offset, dd_range)
 %MK_VEC_DS      Make a vector of DS
 %MK_VEC_DS(n_ds, dx_mu, dx_sigma, r_0, s_0, dd_mid)
 %   n_ds        Number of DS
@@ -9,6 +9,11 @@ function [ret] = mk_vec_ds_new(n_ds, dx_mu, dx_sigma, r_0, s_mid, s_range, dd_mi
 %   s_range     Half range of chunk sizes
 %   dd_mid      Mean of deadline differences between DS ~ Uniform dist.
 %   d_offset    Offset of deadlines
+%   dd_range    Half range of deadline differences
+
+if nargin < 9
+    dd_range = dd_mid;
+end
 
 if nargin < 8
     d_offset = 0;
@@ -23,7 +28,7 @@ dx = round(normrnd(dx_mu, dx_sigma, n_ds, 1));
 x = cumsum(dx);
 r = repmat(r_0, n_ds, 1);
 s = round(rand(n_ds, 1) * s_range * 2 + s_mid - s_range);
-dd = round(rand(n_ds, 1) * dd_mid * 2);
+dd = round(rand(n_ds, 1) * dd_range * 2 + dd_mid - dd_range);
 d = cumsum(dd) + d_offset;
 p = zeros(n_ds, 1);
 for j = 1:n_ds
