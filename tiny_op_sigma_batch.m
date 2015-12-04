@@ -122,7 +122,7 @@ saveas(gcf, 'fig/tiny_op_sigma_reward.fig');
 figure;
 plot(sigma_rate_of_op, time_running(:, 1), sigma_rate_of_op, time_running(:, 2), '-*', sigma_rate_of_op, time_running(:, 3), '-o');
 hold on;
-plot(sigma_rate_of_op, time_running(:, 1), 'LineWidth', 3);
+plot(sigma_rate_of_op, time_running(:, 4), 'LineWidth', 3);
 xlabel('Standard deviation of bandwidth of upload opportunities (kB/s)');
 ylabel('Running time (sec)');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm', 'Brute force');

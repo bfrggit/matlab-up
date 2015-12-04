@@ -121,7 +121,7 @@ saveas(gcf, 'fig/tiny_ds_size_reward.fig');
 figure;
 plot(size_of_ds, time_running(:, 1), size_of_ds, time_running(:, 2), '-*', size_of_ds, time_running(:, 3), '-o');
 hold on;
-plot(size_of_ds, time_running(:, 1), 'LineWidth', 3);
+plot(size_of_ds, time_running(:, 4), 'LineWidth', 3);
 xlabel('Size of one single data chunk (kB)');
 ylabel('Running time (sec)');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm', 'Brute force');

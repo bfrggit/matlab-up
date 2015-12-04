@@ -122,7 +122,7 @@ saveas(gcf, 'fig/tiny_op_number_reward.fig');
 figure;
 plot(number_of_op, time_running(:, 1), number_of_op, time_running(:, 2), '-*', number_of_op, time_running(:, 3), '-o');
 hold on;
-plot(number_of_op, time_running(:, 1), 'LineWidth', 3);
+plot(number_of_op, time_running(:, 4), 'LineWidth', 3);
 xlabel('Number of upload opportunities');
 ylabel('Running time (sec)');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm', 'Brute force');
