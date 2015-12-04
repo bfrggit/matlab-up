@@ -1,5 +1,5 @@
 function [m, ls] = plan_best(v_ds, v_op, t_wait)
-%PLAN_BEST      Generate a plan using brute force search, for comparison
+%PLAN_BEST      Generate a plan using brute force, for comparison
 %PLAN_BEST(v_ds, v_op)
 %   v_ds        DS vector
 %   v_op        OP vector

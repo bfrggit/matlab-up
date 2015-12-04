@@ -1,6 +1,6 @@
 % Author: Charles ZHU
 % --
-% Demo for brute force search compared to ASAP planning
+% Demo for brute force compared to ASAP planning
 
 % Initialize environment
 clc;
@@ -28,11 +28,10 @@ ss = rate(v_ds, t_up) %#ok<NOPTS>
 fprintf('\nSuccess rate for each priority group');
 sr = ss(:, 2)./ ss(:, 1) %#ok<NOPTS,NASGU>
 
-% Brute force search planning
-fprintf('Brute force search planning...\n\n');
+% Brute force planning
+fprintf('Brute force planning...\n\n');
 tic
 [mat_m, ls] = plan_best(v_ds, v_op, T_WAIT);
-fprintf('\n');
 toc
 
 % Calculate actual upload time
