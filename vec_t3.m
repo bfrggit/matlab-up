@@ -12,9 +12,9 @@ function [ret] = vec_t3(b_oo, v_op, v_ds, mat_m, t_wait)
 s_ds = v_ds(:, 3);
 s_op = (diag(s_ds) * mat_m)' * ones(size(v_ds, 1), 1);
 r_op = v_op(:, 2);
-%t_op_wait = (sum(mat_m, 1) > 0)' * t_wait;
-%t_op = s_op./ r_op + t_op_wait;
-t_op = s_op./ r_op + t_wait;
+t_op_wait = (sum(mat_m, 1) > 0)' * t_wait;
+t_op = s_op./ r_op + t_op_wait;
+%t_op = s_op./ r_op + t_wait;
 ret = b_oo * t_op;
 
 end
