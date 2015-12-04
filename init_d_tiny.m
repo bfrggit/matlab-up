@@ -10,8 +10,10 @@ N_DS = 8;
 DX_MU = 180;
 DX_SIGMA = 60;
 R_0 = 1500;
-S_0 = 5000;
+S_M = 5000;
+S_RANGE = 3000;
 DD_M = 80;
+D_OFFSET = 120;
 
 % Constants for OP
 N_OP = 4;
