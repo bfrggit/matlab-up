@@ -6,7 +6,7 @@
 init_p;
 
 % Constants for DS
-N_DS = 1000;
+N_DS = 1000; % 1000;
 DX_MU = 180;
 DX_SIGMA = 60;
 R_0 = 1500;

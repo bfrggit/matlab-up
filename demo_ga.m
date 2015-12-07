@@ -1,6 +1,7 @@
 % Author: Charles ZHU
 % --
 % Demo for GA planning (genetic algorithm) compared to ASAP planning
+% Compatible with simple (old fashion) and rich (new fashion) DS configs
 
 % Initialize environment
 clc;
@@ -8,7 +9,28 @@ rand('state', 3); %#ok<RAND>
 randn('state', 3); %#ok<RAND>
 
 % Generate demo instances
-v_ds = mk_vec_ds(N_DS, DX_MU, DX_SIGMA, R_0, S_0, DD_M);
+if exist('S_0', 'var') % Old fashion
+    v_ds = mk_vec_ds(N_DS, DX_MU, DX_SIGMA, R_0, S_0, DD_M);
+else % New fashion
+    if exist('D_OFFSET', 'var')
+        if exist('DD_RANGE', 'var')
+            v_ds = mk_vec_ds_new( ...
+                N_DS, DX_MU, DX_SIGMA, R_0, ...
+                S_M, S_RANGE, ...
+                DD_M, D_OFFSET, DD_RANGE);
+        else % Using default DD_RANGE, which is DD_M
+            v_ds = mk_vec_ds_new( ...
+                N_DS, DX_MU, DX_SIGMA, R_0, ...
+                S_M, S_RANGE, ...
+                DD_M, D_OFFSET);
+        end
+    else % Using default D_OFFSET, which is 0
+        v_ds = mk_vec_ds_new( ...
+            N_DS, DX_MU, DX_SIGMA, R_0, ...
+            S_M, S_RANGE, ...
+            DD_M);
+    end
+end
 v_op = mk_vec_op(N_OP, DX_M, ER_MU, ER_SIGMA, ER_MIN);
 
 % ASAP planning

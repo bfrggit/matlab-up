@@ -42,7 +42,10 @@ for j = 1:nm_ds
     et_plan1 = 0.0; et_plan2 = 0.0; et_plan3 = 0.0; et_plan4 = 0.0;
     for k = 1:N_LOOP
         % Generate demo instances
-        v_ds = mk_vec_ds_new(N_DS, DX_MU, DX_SIGMA, R_0, size_of_ds(j), ss_range(j), DD_M, D_OFFSET, DD_RANGE);
+        v_ds = mk_vec_ds_new( ...
+            N_DS, DX_MU, DX_SIGMA, R_0, ...
+            size_of_ds(j), ss_range(j), ...
+            DD_M, D_OFFSET, DD_RANGE);
         v_op = mk_vec_op(N_OP, DX_M, ER_MU, ER_SIGMA, ER_MIN);
         
         loop_j = k + (j - 1)* N_LOOP;
@@ -110,7 +113,9 @@ for j = 1:nm_ds
     time_running(j, 4) = et_plan4 / N_LOOP;
 end
 toc
-plot(size_of_ds, reward_total(:, 1), size_of_ds, reward_total(:, 2), '-*', size_of_ds, reward_total(:, 3), '-o');
+plot(size_of_ds, reward_total(:, 1), ...
+    size_of_ds, reward_total(:, 2), '-*', ...
+    size_of_ds, reward_total(:, 3), '-o');
 hold on;
 plot(size_of_ds, reward_total(:, 4), 'LineWidth', 3);
 xlabel('Size of one single data chunk (kB)');
@@ -119,7 +124,9 @@ legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm', 'Brute fo
 saveas(gcf, 'fig/tiny_ds_size_reward.fig');
 
 figure;
-plot(size_of_ds, time_running(:, 1), size_of_ds, time_running(:, 2), '-*', size_of_ds, time_running(:, 3), '-o');
+plot(size_of_ds, time_running(:, 1), ...
+    size_of_ds, time_running(:, 2), '-*', ...
+    size_of_ds, time_running(:, 3), '-o');
 hold on;
 plot(size_of_ds, time_running(:, 4), 'LineWidth', 3);
 xlabel('Size of one single data chunk (kB)');

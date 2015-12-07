@@ -1,6 +1,6 @@
 % Author: Charles ZHU
 % --
-% Demo for algorithm 4 compared to ASAP planning (revised)
+% Demo for algorithm 4 compared to ASAP planning
 % Batch script
 
 % Initialize environment
@@ -26,7 +26,7 @@ for j = 1:N_LOOP
     % Algorithm 4 planning
     fprintf(sprintf('Running loop %d of %d...\n', j, N_LOOP));
     et = cputime;
-    [mat_m, ls] = plan_alg4x(v_ds, v_op, T_WAIT);
+    [mat_m, ls] = plan_alg4(v_ds, v_op, T_WAIT);
     et_plan = et_plan + (cputime - et);
     fprintf('\n');
 
