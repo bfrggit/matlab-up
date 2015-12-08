@@ -53,7 +53,7 @@ for j = 1:nm_op
         
         % ASAP planning
         et = cputime;
-        [mat_m, ls] = plan_asap(v_ds, v_op);
+        [mat_m, ~] = plan_asap(v_ds, v_op);
         et_plan1 = et_plan1 + (cputime - et);
 
         % Calculate actual upload time
@@ -65,7 +65,7 @@ for j = 1:nm_op
         
         % Algorithm 4 planning
         et = cputime;
-        [mat_m, ls] = plan_alg4(v_ds, v_op, T_WAIT);
+        [mat_m, ~] = plan_alg4(v_ds, v_op, T_WAIT);
         et_plan2 = et_plan2 + (cputime - et);
         
         % Calculate actual upload time
@@ -80,7 +80,7 @@ for j = 1:nm_op
 
         % GA planning
         et = cputime;
-        [mat_m, ls] = plan_ga(v_ds, v_op, cst_ls, T_WAIT);
+        [mat_m, ~] = plan_ga(v_ds, v_op, cst_ls, T_WAIT);
         et_plan3 = et_plan3 + (cputime - et);
         fprintf('\n');
 
