@@ -90,6 +90,7 @@ for j = 1:nm_op
         
         %rw3 = reward(v_ds, v_f);
         %rw3_total = rw3_total + rw3;
+        fprintf('\n');
     end
     reward_total(j, 1) = rw1_total / N_LOOP;
     reward_total(j, 2) = rw2_total / N_LOOP;
