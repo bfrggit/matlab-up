@@ -35,7 +35,7 @@ DX_MIN_OP = 200;
 % Constants
 N_LOOP = 10;
 
-size_of_ds = (500:500:10000)';
+size_of_ds = (1000:2000:9000)';
 ss_range = size_of_ds * 0.6;
 nm_ds = size(size_of_ds, 1);
 loop_n = N_LOOP * nm_ds;
