@@ -28,9 +28,9 @@ ER_SIGMA = 250;
 ER_MIN = 25;
 
 % Constants
-N_LOOP = 20;
+N_LOOP = 10;
 
-number_of_op = (20:20:200)';
+number_of_op = (10:10:200)';
 dxs_m = LENGTH./ number_of_op;
 nm_op = size(number_of_op, 1);
 loop_n = N_LOOP * nm_op;
