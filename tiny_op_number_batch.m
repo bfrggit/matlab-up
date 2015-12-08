@@ -43,7 +43,9 @@ for j = 1:nm_op
     et_plan1 = 0.0; et_plan2 = 0.0; et_plan3 = 0.0; et_plan4 = 0.0;
     for k = 1:N_LOOP
         % Generate demo instances
-        v_ds = mk_vec_ds_new(N_DS, DX_MU, DX_SIGMA, R_0, S_M, S_RANGE, DD_M, D_OFFSET, DD_RANGE);
+        v_ds = mk_vec_ds_new(N_DS, DX_MU, DX_SIGMA, R_0, ...
+            S_M, S_RANGE, ...
+            DD_M, D_OFFSET, DD_RANGE);
         v_op = mk_vec_op(number_of_op(j), dxs_m(j), ER_MU, ER_SIGMA, ER_MIN);
         
         loop_j = k + (j - 1)* N_LOOP;
@@ -111,7 +113,9 @@ for j = 1:nm_op
     time_running(j, 4) = et_plan4 / N_LOOP;
 end
 toc
-plot(number_of_op, reward_total(:, 1), number_of_op, reward_total(:, 2), '-*', number_of_op, reward_total(:, 3), '-o');
+plot(number_of_op, reward_total(:, 1), ...
+    number_of_op, reward_total(:, 2), '-*', ...
+    number_of_op, reward_total(:, 3), '-o');
 hold on;
 plot(number_of_op, reward_total(:, 4), 'LineWidth', 3);
 xlabel('Number of upload opportunities');
@@ -120,7 +124,9 @@ legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm', 'Brute fo
 saveas(gcf, 'fig/tiny_op_number_reward.fig');
 
 figure;
-plot(number_of_op, time_running(:, 1), number_of_op, time_running(:, 2), '-*', number_of_op, time_running(:, 3), '-o');
+plot(number_of_op, time_running(:, 1), ...
+    number_of_op, time_running(:, 2), '-*', ...
+    number_of_op, time_running(:, 3), '-o');
 hold on;
 plot(number_of_op, time_running(:, 4), 'LineWidth', 3);
 xlabel('Number of upload opportunities');

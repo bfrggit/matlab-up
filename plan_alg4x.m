@@ -43,13 +43,11 @@ while size(dynamic_ds, 2) > 0
         tmp_t_comp = vec_t_comp( ...
             v_ds, v_op, ls_to_m(present_x, n_op), t_wait);
         tmp_t_comp = tmp_t_comp + v_ds(present_ds, 3)./ v_op(:, 2);
-        avail = ((1:n_op)' >= first_op) & (tmp_t_comp <= v_ds(present_ds, 4));
-        if sum(avail, 1) > 0
-            [fastest_avail_r, fastest_avail] = max(avail.* v_op(:, 2));
-            chosen_op = fastest_avail;
+        avail_op = (1:n_op)' >= first_op ...
+            & tmp_t_comp <= v_ds(present_ds, 4);
+        if sum(avail_op, 1) > 0
+            [~, chosen_op] = max(avail_op.* v_op(:, 2));
         end
-        
-        v_f = vec_f(v_ds, vec_t_up(v_ds, v_op, ls_to_m(present_x, n_op), t_wait));
 
         if chosen_op < n_op % If this DS does fit
             present_x(present_ds) = chosen_op;
@@ -58,10 +56,9 @@ while size(dynamic_ds, 2) > 0
             %fprintf('DS %d is scheduled at OP %d.\n', present_ds, chosen_op);
 
             % Dump sacrificed DS
-            for j = 1:size(sacrificed_ds, 1)
-                single_ds = sacrificed_ds(j, :);
-                dynamic_ds = [dynamic_ds single_ds(1)]; %#ok<AGROW>
-                %fprintf('Need to reschedule sacrificed OP %d.\n', single_ds(1));
+            if size(sacrificed_ds, 2) > 0
+                sacrificed_ds_cell = num2cell(sacrificed_ds(:, 1)');
+                dynamic_ds = [dynamic_ds sacrificed_ds_cell];
             end
             break
         else % If this DS does not fit
@@ -69,21 +66,23 @@ while size(dynamic_ds, 2) > 0
             
             % Choose one DS to sacrifice in order to fit the present
             chosen_ds = 0;
-            for j = 1:n_ds
-                if j ~= present_ds && present_x(j) <= first_op ...
-                        && present_x(j) < n_op
-                    % Criteria: lower priority / later deadline
-                    if v_ds(j, 5) < v_ds(present_ds, 5) ...
-                            || v_ds(j, 5) == v_ds(present_ds, 5) ...
-                            && v_ds(j, 4) > v_ds(present_ds, 4)
-                        if chosen_ds <= 0 ...
-                                || v_ds(j, 5) < v_ds(chosen_ds, 5) ...
-                                || v_ds(j, 5) == v_ds(chosen_ds, 5) ...
-                                && v_ds(j, 4) > v_ds(chosen_ds, 4)
-                            chosen_ds = j;
-                        end
-                    end
-                end
+            
+            % Other DS scheduled before current OP
+            chosen_ds_c1 = (1:n_ds)' ~= present_ds ...
+                & present_x <= first_op ...
+                & present_x < n_op;
+            
+            % Criteria: lower priority / later deadline
+            chosen_ds_c2 = v_ds(:, 5) < v_ds(present_ds, 5) ...
+                            | v_ds(:, 5) == v_ds(present_ds, 5) ...
+                            & v_ds(:, 4) > v_ds(present_ds, 4);
+            avail_ds = chosen_ds_c1 & chosen_ds_c2;
+            if sum(avail_ds, 1) > 0
+                priority_min = min(inf * (1 - avail_ds).* v_ds(:, 5));
+                avail_ds = avail_ds & (v_ds(:, 5) <= priority_min);
+                size_max = max(avail_ds.* v_ds(:, 3));
+                avail_ds = avail_ds & (v_ds(:, 3) >= size_max);
+                [~, chosen_ds] = max(avail_ds.* v_ds(:, 4));
             end
             
             if chosen_ds > 0
@@ -95,7 +94,11 @@ while size(dynamic_ds, 2) > 0
                     %present_ds, ...
                     %v_ds(present_ds, 4), ...
                     %v_ds(present_ds, 5));
-                sacrifice = sacrifice + v_f(chosen_ds) * v_ds(chosen_ds, 5);
+                v_f = vec_f(v_ds, ...
+                    vec_t_up(v_ds, v_op, ls_to_m(present_x, n_op), ...
+                    t_wait));
+                sacrifice = sacrifice + ...
+                    v_f(chosen_ds) * v_ds(chosen_ds, 5);
             end
             if chosen_ds <= 0 || sacrifice >= v_ds(present_ds, 5) % Too much sacrifice
                 %if chosen_ds > 0
@@ -104,10 +107,9 @@ while size(dynamic_ds, 2) > 0
                     %fprintf('Unable to choose DS to sacrifice for DS %d.\n', present_ds);
                 %end
                 chosen_new_op = first_op;
-                for j = first_op:(n_op-1)
-                    if v_op(j, 2) > v_op(chosen_new_op, 2)
-                        chosen_new_op = j;
-                    end
+                avail_op_2 = (1:n_op)' >= first_op & (1:n_op)' < n_op;
+                if sum(avail_op_2, 1) > 0
+                    [~, chosen_new_op] = max(avail_op_2.* v_op(:, 2));
                 end
                 present_x(present_ds) = chosen_new_op;
                 %fprintf('DS %d is scheduled at OP %d.\n', present_ds, chosen_new_op);
@@ -120,7 +122,8 @@ while size(dynamic_ds, 2) > 0
                 end
                 break
             else
-                sacrificed_ds = [sacrificed_ds; chosen_ds present_x(chosen_ds)]; %#ok<AGROW>
+                sacrificed_ds = [sacrificed_ds; ...
+                    chosen_ds present_x(chosen_ds)]; %#ok<AGROW>
                 present_x(chosen_ds) = n_op;
                 dynamic_ds = [dynamic_ds present_ds]; %#ok<AGROW>
                 %fprintf('Sacrificed DS %d for DS %d.\n', chosen_ds, present_ds);

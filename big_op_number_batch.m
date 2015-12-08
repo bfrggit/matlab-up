@@ -30,7 +30,7 @@ ER_MIN = 25;
 % Constants
 N_LOOP = 20;
 
-number_of_op = (10:10:200)';
+number_of_op = (20:20:200)';
 dxs_m = LENGTH./ number_of_op;
 nm_op = size(number_of_op, 1);
 loop_n = N_LOOP * nm_op;
@@ -63,7 +63,7 @@ for j = 1:nm_op
         
         % Algorithm 4 planning
         et = cputime;
-        [mat_m, ls] = plan_alg4(v_ds, v_op, T_WAIT);
+        [mat_m, ls] = plan_alg4x(v_ds, v_op, T_WAIT);
         et_plan2 = et_plan2 + (cputime - et);
         
         % Calculate actual upload time
@@ -97,17 +97,21 @@ for j = 1:nm_op
     time_running(j, 3) = et_plan3 / N_LOOP;
 end
 toc
-plot(number_of_op, reward_total(:, 1), number_of_op, reward_total(:, 2), '-*', number_of_op, reward_total(:, 3), '-o');
+plot(number_of_op, reward_total(:, 1), ...
+    number_of_op, reward_total(:, 2), '-*', ...
+    number_of_op, reward_total(:, 3), '-o');
 xlabel('Number of upload opportunities');
 ylabel('Weighted overall utility');
-legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm', 'Brute force');
+legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
 saveas(gcf, 'fig/big_op_number_reward.fig');
 
 figure;
-plot(number_of_op, time_running(:, 1), number_of_op, time_running(:, 2), '-*', number_of_op, time_running(:, 3), '-o');
+plot(number_of_op, time_running(:, 1), ...
+    number_of_op, time_running(:, 2), '-*', ...
+    number_of_op, time_running(:, 3), '-o');
 xlabel('Number of upload opportunities');
 ylabel('Running time (sec)');
-legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm', 'Brute force');
+legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
 saveas(gcf, 'fig/big_op_number_time.fig');
 
 save('mat/big_op_number.mat')
