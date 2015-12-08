@@ -120,7 +120,7 @@ for j = 1:nm_op
         
         % Algorithm 4 planning
         et = cputime;
-        [mat_m, ls] = plan_alg4(v_ds, v_op, t_wait);
+        [mat_m, ls] = plan_alg4x(v_ds, v_op, t_wait);
         et_plan2 = et_plan2 + (cputime - et);
         
         % Calculate actual upload time
