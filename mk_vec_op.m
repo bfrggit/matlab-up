@@ -8,7 +8,7 @@ function [ret] = mk_vec_op(n_op, dx_mid, er_mu, er_sigma, er_min)
 
 global INF_PSEUDO;
 
-dx = round(rand(n_op, 1) * dx_mid * 2);
+dx = max(round(rand(n_op, 1) * dx_mid * 2), 1);
 x = cumsum(dx);
 x(end + 1) = INF_PSEUDO;
 mu = er_mu / er_min;
