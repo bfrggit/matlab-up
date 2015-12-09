@@ -5,7 +5,7 @@
 
 init_p;
 
-t_wait = 20;
+t_wait = 15;
 
 % Initialize environment
 clc;
