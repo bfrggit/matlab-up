@@ -66,6 +66,7 @@ for j = 1:nm_op
         % Calculate actual upload time
         t_up = vec_t_up(v_ds, v_op, mat_m, T_WAIT);
         v_f = vec_f(v_ds, t_up);
+        t_comp = vec_t_comp(v_ds, v_op, mat_m, T_WAIT);
         
         rw1 = reward(v_ds, v_f);
         rw1_total = rw1_total + rw1;
@@ -81,6 +82,7 @@ for j = 1:nm_op
         % Calculate actual upload time
         t_up = vec_t_up(v_ds, v_op, mat_m, T_WAIT);
         v_f = vec_f(v_ds, t_up);
+        t_comp = vec_t_comp(v_ds, v_op, mat_m, T_WAIT);
         
         rw2 = reward(v_ds, v_f);
         rw2_total = rw2_total + rw2;
@@ -100,6 +102,7 @@ for j = 1:nm_op
         % Calculate actual upload time
         t_up = vec_t_up(v_ds, v_op, mat_m, T_WAIT);
         v_f = vec_f(v_ds, t_up);
+        t_comp = vec_t_comp(v_ds, v_op, mat_m, T_WAIT);
         
         rw3 = reward(v_ds, v_f);
         rw3_total = rw3_total + rw3;
