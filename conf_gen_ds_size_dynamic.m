@@ -126,7 +126,7 @@ for j = 1:nm_ds
                 size_of_ds(j), k), ...
             t_comp, ' ');
         save(sprintf('config_dynamic/change_ds_size/%d/case_%d/asap.mat', ...
-            number_of_op(j), k));
+            size_of_ds(j), k));
         
         % Algorithm 4 planning
         et = cputime;
@@ -161,7 +161,7 @@ for j = 1:nm_ds
                 size_of_ds(j), k), ...
             t_comp, ' ');
         save(sprintf('config_dynamic/change_ds_size/%d/case_%d/alg4.mat', ...
-            number_of_op(j), k));
+            size_of_ds(j), k));
         
         % ASAP planning
         [cst_m, cst_ls] = plan_asap(v_ds, v_op);
@@ -200,7 +200,7 @@ for j = 1:nm_ds
                 size_of_ds(j), k), ...
             t_comp, ' ');
         save(sprintf('config_dynamic/change_ds_size/%d/case_%d/ga.mat', ...
-            number_of_op(j), k));
+            size_of_ds(j), k));
     end
     reward_total(j, 1) = rw1_total / N_LOOP;
     reward_total(j, 2) = rw2_total / N_LOOP;
