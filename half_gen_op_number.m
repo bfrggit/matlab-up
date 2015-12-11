@@ -73,7 +73,7 @@ for j = 1:nm_op
         
         rw1 = reward(v_ds, v_f);
         rw1_total = rw1_total + rw1;
-        rt1 = rate_new_row(v_ds, v_f);
+        rt1 = rate_new_row(v_ds, t_up);
         rt1_total = rt1_total + rt1;
         
         save(sprintf('half/change_op_number/%d/case_%d/asap.mat', ...
@@ -91,7 +91,7 @@ for j = 1:nm_op
         
         rw2 = reward(v_ds, v_f);
         rw2_total = rw2_total + rw2;
-        rt2 = rate_new_row(v_ds, v_f);
+        rt2 = rate_new_row(v_ds, t_up);
         rt2_total = rt2_total + rt2;
         
         save(sprintf('half/change_op_number/%d/case_%d/alg4.mat', ...
@@ -113,7 +113,7 @@ for j = 1:nm_op
         
         rw3 = reward(v_ds, v_f);
         rw3_total = rw3_total + rw3;
-        rt3 = rate_new_row(v_ds, v_f);
+        rt3 = rate_new_row(v_ds, t_up);
         rt3_total = rt3_total + rt3;
         
         save(sprintf('half/change_op_number/%d/case_%d/ga.mat', ...
