@@ -37,6 +37,7 @@ loop_n = N_LOOP * nm_op;
 reward_total = zeros(nm_op, 3);
 time_running = zeros(nm_op, 3);
 rate_total = zeros(nm_op, 9);
+rate_all_total = zeros(nm_op, 3);
 
 mkdir('half');
 mkdir('half', 'change_op_number');
@@ -68,7 +69,7 @@ for j = 1:nm_op
         % Calculate actual upload time
         t_up = vec_t_up(v_ds, v_op, mat_m, T_WAIT);
         v_f = vec_f(v_ds, t_up);
-        t_comp = vec_t_comp(v_ds, v_op, mat_m, T_WAIT);
+        t_comp = vec_t_comp(v_ds, v_op, mat_m, T_WAIT); %#ok<*NASGU>
         
         rw1 = reward(v_ds, v_f);
         rw1_total = rw1_total + rw1;
@@ -118,15 +119,15 @@ for j = 1:nm_op
         save(sprintf('half/change_op_number/%d/case_%d/ga.mat', ...
                 number_of_op(j), k));
     end
-    reward_total(j, 1) = rw1_total / N_LOOP;
-    reward_total(j, 2) = rw2_total / N_LOOP;
-    reward_total(j, 3) = rw3_total / N_LOOP;
-    time_running(j, 1) = et_plan1 / N_LOOP;
-    time_running(j, 2) = et_plan2 / N_LOOP;
-    time_running(j, 3) = et_plan3 / N_LOOP;
+    reward_total(j, :) = [rw1_total, rw2_total, rw3_total] / N_LOOP;
+    time_running(j, :) = [et_plan1, et_plan2, et_plan3] / N_LOOP;
     rate_total(j, 1:3) = rt1_total(4:6)./ rt1_total(1:3);
     rate_total(j, 4:6) = rt2_total(4:6)./ rt2_total(1:3);
     rate_total(j, 7:9) = rt3_total(4:6)./ rt3_total(1:3);
+    rate_all_total(j, :) = [ ...
+        sum(rt1_total(4:6)) / sum(rt1_total(1:3)), ...
+        sum(rt2_total(4:6)) / sum(rt2_total(1:3)), ...
+        sum(rt3_total(4:6)) / sum(rt3_total(1:3))];
 end
 toc
 plot(number_of_op, reward_total(:, 1), ...
@@ -151,7 +152,7 @@ plot(number_of_op, rate_total(:, 1), ...
     number_of_op, rate_total(:, 4), '-*', ...
     number_of_op, rate_total(:, 7), '-o');
 xlabel('Number of upload opportunities');
-ylabel('Portion of high priority data uploaded');
+ylabel('Portion of high priority data chunks uploaded');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
 saveas(gcf, 'fig_2/half_op_number_high.fig');
 
@@ -160,7 +161,7 @@ plot(number_of_op, rate_total(:, 2), ...
     number_of_op, rate_total(:, 5), '-*', ...
     number_of_op, rate_total(:, 8), '-o');
 xlabel('Number of upload opportunities');
-ylabel('Portion of medium priority data uploaded');
+ylabel('Portion of medium priority data chunks uploaded');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
 saveas(gcf, 'fig_2/half_op_number_medium.fig');
 
@@ -169,8 +170,17 @@ plot(number_of_op, rate_total(:, 3), ...
     number_of_op, rate_total(:, 6), '-*', ...
     number_of_op, rate_total(:, 9), '-o');
 xlabel('Number of upload opportunities');
-ylabel('Portion of low priority data uploaded');
+ylabel('Portion of low priority data chunks uploaded');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
 saveas(gcf, 'fig_2/half_op_number_low.fig');
+
+figure;
+plot(number_of_op, rate_all_total(:, 1), ...
+    number_of_op, rate_all_total(:, 2), '-*', ...
+    number_of_op, rate_all_total(:, 3), '-o');
+xlabel('Number of upload opportunities');
+ylabel('Portion of data chunks uploaded');
+legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+saveas(gcf, 'fig_2/half_op_number_all.fig');
 
 save('mat/half_op_number.mat')
