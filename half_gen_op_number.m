@@ -36,6 +36,7 @@ nm_op = size(number_of_op, 1);
 loop_n = N_LOOP * nm_op;
 reward_total = zeros(nm_op, 3);
 time_running = zeros(nm_op, 3);
+rate_total = zeros(nm_op, 9);
 
 mkdir('half');
 mkdir('half', 'change_op_number');
@@ -44,6 +45,7 @@ tic
 for j = 1:nm_op
     rw1_total = 0.0; rw2_total = 0.0; rw3_total = 0.0;
     et_plan1 = 0.0; et_plan2 = 0.0; et_plan3 = 0.0;
+    rt1_total = zeros(1, 6); rt2_total = rt1_total; rt3_total = rt1_total;
     
     mkdir('half/change_op_number', sprintf('%d', number_of_op(j)));
     
@@ -70,6 +72,8 @@ for j = 1:nm_op
         
         rw1 = reward(v_ds, v_f);
         rw1_total = rw1_total + rw1;
+        rt1 = rate_new_row(v_ds, v_f);
+        rt1_total = rt1_total + rt1;
         
         save(sprintf('half/change_op_number/%d/case_%d/asap.mat', ...
                 number_of_op(j), k));
@@ -86,6 +90,8 @@ for j = 1:nm_op
         
         rw2 = reward(v_ds, v_f);
         rw2_total = rw2_total + rw2;
+        rt2 = rate_new_row(v_ds, v_f);
+        rt2_total = rt2_total + rt2;
         
         save(sprintf('half/change_op_number/%d/case_%d/alg4.mat', ...
                 number_of_op(j), k));
@@ -106,6 +112,8 @@ for j = 1:nm_op
         
         rw3 = reward(v_ds, v_f);
         rw3_total = rw3_total + rw3;
+        rt3 = rate_new_row(v_ds, v_f);
+        rt3_total = rt3_total + rt3;
         
         save(sprintf('half/change_op_number/%d/case_%d/ga.mat', ...
                 number_of_op(j), k));
@@ -116,6 +124,9 @@ for j = 1:nm_op
     time_running(j, 1) = et_plan1 / N_LOOP;
     time_running(j, 2) = et_plan2 / N_LOOP;
     time_running(j, 3) = et_plan3 / N_LOOP;
+    rate_total(j, 1:3) = rt1_total(4:6)./ rt1_total(1:3);
+    rate_total(j, 4:6) = rt2_total(4:6)./ rt2_total(1:3);
+    rate_total(j, 7:9) = rt3_total(4:6)./ rt3_total(1:3);
 end
 toc
 plot(number_of_op, reward_total(:, 1), ...
@@ -134,5 +145,32 @@ xlabel('Number of upload opportunities');
 ylabel('Running time (sec)');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
 saveas(gcf, 'fig/half_op_number_time.fig');
+
+figure;
+plot(number_of_op, rate_total(:, 1), ...
+    number_of_op, rate_total(:, 4), '-*', ...
+    number_of_op, rate_total(:, 7), '-o');
+xlabel('Number of upload opportunities');
+ylabel('Portion of high priority data uploaded');
+legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+saveas(gcf, 'fig_2/half_op_number_high.fig');
+
+figure;
+plot(number_of_op, rate_total(:, 2), ...
+    number_of_op, rate_total(:, 5), '-*', ...
+    number_of_op, rate_total(:, 8), '-o');
+xlabel('Number of upload opportunities');
+ylabel('Portion of medium priority data uploaded');
+legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+saveas(gcf, 'fig_2/half_op_number_medium.fig');
+
+figure;
+plot(number_of_op, rate_total(:, 3), ...
+    number_of_op, rate_total(:, 6), '-*', ...
+    number_of_op, rate_total(:, 9), '-o');
+xlabel('Number of upload opportunities');
+ylabel('Portion of low priority data uploaded');
+legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+saveas(gcf, 'fig_2/half_op_number_low.fig');
 
 save('mat/half_op_number.mat')
