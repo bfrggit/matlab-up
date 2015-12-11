@@ -64,6 +64,6 @@ v_f = vec_f(v_ds, t_up);
 fprintf('\nReward of plan');
 rw = reward(v_ds, v_f)
 fprintf('\nCount for each priority group');
-ss = rate(v_ds, t_up)
+ss = rate_new(v_ds, t_up)
 fprintf('\nSuccess rate for each priority group');
 sr = ss(:, 2)./ ss(:, 1)
