@@ -38,15 +38,17 @@ reward_total = zeros(nm_op, 3);
 time_running = zeros(nm_op, 3);
 rate_total = zeros(nm_op, 9);
 rate_all_total = zeros(nm_op, 3);
+length_task = zeros(nm_op, 3);
 
 mkdir('half');
 mkdir('half', 'change_op_number');
 
 tic
 for j = 1:nm_op
-    rw1_total = 0.0; rw2_total = 0.0; rw3_total = 0.0;
-    et_plan1 = 0.0; et_plan2 = 0.0; et_plan3 = 0.0;
-    rt1_total = zeros(1, 6); rt2_total = rt1_total; rt3_total = rt1_total;
+    reward_acc = zeros(1, 3);
+    time_acc = zeros(1, 3);
+    rate_acc = zeros(3, 6);
+    length_acc = zeros(1, 3);
     
     mkdir('half/change_op_number', sprintf('%d', number_of_op(j)));
     
@@ -64,17 +66,16 @@ for j = 1:nm_op
         % ASAP planning
         et = cputime;
         [mat_m, ~] = plan_asap(v_ds, v_op);
-        et_plan1 = et_plan1 + (cputime - et);
+        time_acc(1) = time_acc(1) + (cputime - et);
 
         % Calculate actual upload time
         t_up = vec_t_up(v_ds, v_op, mat_m, T_WAIT);
         v_f = vec_f(v_ds, t_up);
         t_comp = vec_t_comp(v_ds, v_op, mat_m, T_WAIT); %#ok<*NASGU>
         
-        rw1 = reward(v_ds, v_f);
-        rw1_total = rw1_total + rw1;
-        rt1 = rate_new_row(v_ds, t_up);
-        rt1_total = rt1_total + rt1;
+        reward_acc(1) = reward_acc(1) + reward(v_ds, v_f);
+        rate_acc(1, :) = rate_acc(1, :) + rate_new_row(v_ds, t_up);
+        length_acc(1) = length_acc(1) + t_comp(size(t_comp, 1) - 1);
         
         save(sprintf('half/change_op_number/%d/case_%d/asap.mat', ...
                 number_of_op(j), k));
@@ -82,17 +83,16 @@ for j = 1:nm_op
         % Algorithm 4 planning
         et = cputime;
         [mat_m, ~] = plan_alg4x(v_ds, v_op, T_WAIT);
-        et_plan2 = et_plan2 + (cputime - et);
+        time_acc(2) = time_acc(2) + (cputime - et);
         
         % Calculate actual upload time
         t_up = vec_t_up(v_ds, v_op, mat_m, T_WAIT);
         v_f = vec_f(v_ds, t_up);
         t_comp = vec_t_comp(v_ds, v_op, mat_m, T_WAIT);
         
-        rw2 = reward(v_ds, v_f);
-        rw2_total = rw2_total + rw2;
-        rt2 = rate_new_row(v_ds, t_up);
-        rt2_total = rt2_total + rt2;
+        reward_acc(2) = reward_acc(2) + reward(v_ds, v_f);
+        rate_acc(2, :) = rate_acc(2, :) + rate_new_row(v_ds, t_up);
+        length_acc(2) = length_acc(2) + t_comp(size(t_comp, 1) - 1);
         
         save(sprintf('half/change_op_number/%d/case_%d/alg4.mat', ...
                 number_of_op(j), k));
@@ -103,7 +103,7 @@ for j = 1:nm_op
         % GA planning
         et = cputime;
         [mat_m, ls] = plan_ga(v_ds, v_op, cst_ls, T_WAIT);
-        et_plan3 = et_plan3 + (cputime - et);
+        time_acc(3) = time_acc(3) + (cputime - et);
         fprintf('\n');
 
         % Calculate actual upload time
@@ -111,23 +111,23 @@ for j = 1:nm_op
         v_f = vec_f(v_ds, t_up);
         t_comp = vec_t_comp(v_ds, v_op, mat_m, T_WAIT);
         
-        rw3 = reward(v_ds, v_f);
-        rw3_total = rw3_total + rw3;
-        rt3 = rate_new_row(v_ds, t_up);
-        rt3_total = rt3_total + rt3;
+        reward_acc(3) = reward_acc(3) + reward(v_ds, v_f);
+        rate_acc(3, :) = rate_acc(3, :) + rate_new_row(v_ds, t_up);
+        length_acc(3) = length_acc(3) + t_comp(size(t_comp, 1) - 1);
         
         save(sprintf('half/change_op_number/%d/case_%d/ga.mat', ...
                 number_of_op(j), k));
     end
-    reward_total(j, :) = [rw1_total, rw2_total, rw3_total] / N_LOOP;
-    time_running(j, :) = [et_plan1, et_plan2, et_plan3] / N_LOOP;
-    rate_total(j, 1:3) = rt1_total(4:6)./ rt1_total(1:3);
-    rate_total(j, 4:6) = rt2_total(4:6)./ rt2_total(1:3);
-    rate_total(j, 7:9) = rt3_total(4:6)./ rt3_total(1:3);
+    reward_total(j, :) = reward_acc / N_LOOP;
+    time_running(j, :) = time_acc / N_LOOP;
+    rate_total(j, 1:3) = rate_acc(1, 4:6)./ rate_acc(1, 1:3);
+    rate_total(j, 4:6) = rate_acc(2, 4:6)./ rate_acc(2, 1:3);
+    rate_total(j, 7:9) = rate_acc(3, 4:6)./ rate_acc(3, 1:3);
     rate_all_total(j, :) = [ ...
-        sum(rt1_total(4:6)) / sum(rt1_total(1:3)), ...
-        sum(rt2_total(4:6)) / sum(rt2_total(1:3)), ...
-        sum(rt3_total(4:6)) / sum(rt3_total(1:3))];
+        sum(rate_acc(1, 4:6)) / sum(rate_acc(1, 1:3)), ...
+        sum(rate_acc(2, 4:6)) / sum(rate_acc(2, 1:3)), ...
+        sum(rate_acc(3, 4:6)) / sum(rate_acc(3, 1:3))];
+    length_task(j, :) = length_acc / N_LOOP;
 end
 toc
 plot(number_of_op, reward_total(:, 1), ...
@@ -182,5 +182,14 @@ xlabel('Number of upload opportunities');
 ylabel('Portion of data chunks uploaded');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
 saveas(gcf, 'fig_2/half_op_number_all.fig');
+
+figure;
+plot(number_of_op, length_task(:, 1), ...
+    number_of_op, length_task(:, 2), '-*', ...
+    number_of_op, length_task(:, 3), '-o');
+xlabel('Number of upload opportunities');
+ylabel('Total time to finish all data collection');
+legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+saveas(gcf, 'fig_2/half_op_number_length.fig');
 
 save('mat/half_op_number.mat')
