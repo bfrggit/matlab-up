@@ -100,7 +100,8 @@ plot(number_of_op, reward_total(:, 1), ...
     %number_of_op, reward_total(:, 3), '-o');
 xlabel('Number of upload opportunities');
 ylabel('Weighted overall utility');
-legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+legend('First opportunity', 'Proposed algorithm', ...
+	'Location', 'southeast');
 saveas(gcf, 'fig/big_op_number_reward.fig');
 
 figure;
@@ -109,7 +110,7 @@ plot(number_of_op, time_running(:, 1), ...
     %number_of_op, time_running(:, 3), '-o');
 xlabel('Number of upload opportunities');
 ylabel('Running time (sec)');
-legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+legend('First opportunity', 'Proposed algorithm');
 saveas(gcf, 'fig/big_op_number_time.fig');
 
 figure;
@@ -118,7 +119,8 @@ plot(number_of_op, rate_total(:, 1), ...
     %number_of_op, rate_total(:, 7), '-o');
 xlabel('Number of upload opportunities');
 ylabel('Portion of high priority data chunks uploaded');
-legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+legend('First opportunity', 'Proposed algorithm', ...
+	'Location', 'southeast');
 saveas(gcf, 'fig_2/big_op_number_high.fig');
 
 figure;
@@ -127,7 +129,8 @@ plot(number_of_op, rate_total(:, 2), ...
     %number_of_op, rate_total(:, 8), '-o');
 xlabel('Number of upload opportunities');
 ylabel('Portion of medium priority data chunks uploaded');
-legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+legend('First opportunity', 'Proposed algorithm', ...
+	'Location', 'southeast');
 saveas(gcf, 'fig_2/big_op_number_medium.fig');
 
 figure;
@@ -136,7 +139,8 @@ plot(number_of_op, rate_total(:, 3), ...
     %number_of_op, rate_total(:, 9), '-o');
 xlabel('Number of upload opportunities');
 ylabel('Portion of low priority data chunks uploaded');
-legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+legend('First opportunity', 'Proposed algorithm', ...
+	'Location', 'southeast');
 saveas(gcf, 'fig_2/big_op_number_low.fig');
 
 figure;
@@ -145,7 +149,8 @@ plot(number_of_op, rate_all_total(:, 1), ...
     %number_of_op, rate_all_total(:, 3), '-o');
 xlabel('Number of upload opportunities');
 ylabel('Portion of data chunks uploaded');
-legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+legend('First opportunity', 'Proposed algorithm', ...
+	'Location', 'southeast');
 saveas(gcf, 'fig_2/big_op_number_all.fig');
 
 figure;
@@ -153,8 +158,8 @@ plot(number_of_op, length_task(:, 1), ...
     number_of_op, length_task(:, 2), '-*'); %, ...
     %number_of_op, length_task(:, 3), '-o');
 xlabel('Number of upload opportunities');
-ylabel('Total time to finish all data collection');
-legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+ylabel('Total time to finish all data collection (sec)');
+legend('First opportunity', 'Proposed algorithm');
 saveas(gcf, 'fig_2/big_op_number_length.fig');
 
 save('mat/big_op_number.mat')

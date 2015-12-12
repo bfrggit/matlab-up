@@ -171,7 +171,7 @@ plot(sigma_rate_of_op, length_task(:, 1), ...
     sigma_rate_of_op, length_task(:, 2), '-*', ...
     sigma_rate_of_op, length_task(:, 3), '-o');
 xlabel('Standard deviation of bandwidth of upload opportunities (kB/s)');
-ylabel('Total time to finish all data collection');
+ylabel('Total time to finish all data collection (sec)');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
 saveas(gcf, 'fig_2/mid_op_sigma_length.fig');
 

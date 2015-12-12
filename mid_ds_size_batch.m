@@ -173,7 +173,7 @@ plot(size_of_ds, length_task(:, 1), ...
     size_of_ds, length_task(:, 2), '-*', ...
     size_of_ds, length_task(:, 3), '-o');
 xlabel('Size of one single data chunk (kB)');
-ylabel('Total time to finish all data collection');
+ylabel('Total time to finish all data collection (sec)');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
 saveas(gcf, 'fig_2/mid_ds_size_length.fig');
 

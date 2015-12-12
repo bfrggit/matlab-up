@@ -175,7 +175,7 @@ plot(number_of_ds, length_task(:, 1), ...
     number_of_ds, length_task(:, 2), '-*', ...
     number_of_ds, length_task(:, 3), '-o');
 xlabel('Number of data sites');
-ylabel('Total time to finish all data collection');
+ylabel('Total time to finish all data collection (sec)');
 legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
 saveas(gcf, 'fig_2/mid_ds_number_length.fig');
 
