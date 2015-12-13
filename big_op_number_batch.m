@@ -82,6 +82,8 @@ for j = 1:nm_op
         reward_acc(2) = reward_acc(2) + reward(v_ds, v_f);
         rate_acc(2, :) = rate_acc(2, :) + rate_new_row(v_ds, t_up);
         length_acc(2) = length_acc(2) + t_comp(size(t_comp, 1) - 1);
+
+        fprintf('\n');
     end
     reward_total(j, :) = reward_acc / N_LOOP;
     time_running(j, :) = time_acc / N_LOOP;
