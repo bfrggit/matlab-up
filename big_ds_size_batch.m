@@ -104,7 +104,7 @@ plot(size_of_ds, reward_total(:, 1), ...
     %size_of_ds, reward_total(:, 3), '-o');
 xlabel('Size of one single data chunk (kB)');
 ylabel('Weighted overall utility');
-legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+legend('First opportunity', 'Proposed algorithm');
 saveas(gcf, 'fig/big_ds_size_reward.fig');
 
 figure;

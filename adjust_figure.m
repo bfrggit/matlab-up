@@ -1,0 +1,14 @@
+set(gca, 'FontSize', 14);
+set(findall(gca, 'Type', 'Line'), 'LineWidth', 2);
+set(findall(gca, 'Type', 'Line'), 'MarkerSize', 10);
+%legend('Location', 'southeast');
+%legend('Location', 'southwest');
+%legend('Location', 'northwest');
+%legend('First opportunity', 'Balanced DOP', 'Genetic algorithm');
+%legend('First opportunity', 'Balanced DOP');
+%xlabel('Average size of data chunks (KB)');
+%xlabel('STDEV of upload bandwidths (KB/s)');
+%ylabel('Time to complete all data collection (sec)');
+%ylabel('Portion of important data chunks uploaded');
+%ylabel('Portion of medium data chunks uploaded');
+%ylabel('Portion of unimp. data chunks uploaded');
