@@ -7,8 +7,10 @@ init_p;
 
 % Initialize environment
 clc;
-rand('state', 0); %#ok<RAND>
-randn('state', 0); %#ok<RAND>
+%rand('state', 0); %#ok<RAND>
+%randn('state', 0); %#ok<RAND>
+rng('default');
+rng(0);
 
 % Constants for DS
 N_DS = 1000;
@@ -30,6 +32,9 @@ ER_MIN = 25;
 % Constants
 N_LOOP = 10;
 
+% Random seeds for loops
+rng_seeds = randi(2 ^ 32 - 1, N_LOOP, 2);
+
 number_of_op = (10:10:200)';
 dxs_m = LENGTH./ number_of_op;
 nm_op = size(number_of_op, 1);
@@ -49,7 +54,10 @@ for j = 1:nm_op
     
     for k = 1:N_LOOP
         % Generate demo instances
-        v_ds = mk_vec_ds_new(N_DS, DX_MU, DX_SIGMA, R_0, S_M, S_RANGE, DD_M, D_OFFSET, DD_RANGE);
+        rng(rng_seeds(k, 1));
+        v_ds = mk_vec_ds_new(N_DS, DX_MU, DX_SIGMA, R_0, ...
+        	S_M, S_RANGE, DD_M, D_OFFSET, DD_RANGE);
+        rng(rng_seeds(k, 2));
         v_op = mk_vec_op(number_of_op(j), dxs_m(j), ER_MU, ER_SIGMA, ER_MIN);
         
         loop_j = k + (j - 1)* N_LOOP;
@@ -102,7 +110,7 @@ plot(number_of_op, reward_total(:, 1), ...
     %number_of_op, reward_total(:, 3), '-o');
 xlabel('Number of upload opportunities');
 ylabel('Weighted overall utility');
-legend('First opportunity', 'Proposed algorithm', ...
+legend('First opportunity', 'Balanced DOP', ...
 	'Location', 'southeast');
 saveas(gcf, 'fig/big_op_number_reward.fig');
 
@@ -112,7 +120,7 @@ plot(number_of_op, time_running(:, 1), ...
     %number_of_op, time_running(:, 3), '-o');
 xlabel('Number of upload opportunities');
 ylabel('Running time (sec)');
-legend('First opportunity', 'Proposed algorithm');
+legend('First opportunity', 'Balanced DOP');
 saveas(gcf, 'fig/big_op_number_time.fig');
 
 figure;
@@ -120,8 +128,8 @@ plot(number_of_op, rate_total(:, 1), ...
     number_of_op, rate_total(:, 4), '-*'); %, ...
     %number_of_op, rate_total(:, 7), '-o');
 xlabel('Number of upload opportunities');
-ylabel('Portion of high priority data chunks uploaded');
-legend('First opportunity', 'Proposed algorithm', ...
+ylabel('Portion of important data chunks uploaded');
+legend('First opportunity', 'Balanced DOP', ...
 	'Location', 'southeast');
 saveas(gcf, 'fig_2/big_op_number_high.fig');
 
@@ -130,8 +138,8 @@ plot(number_of_op, rate_total(:, 2), ...
     number_of_op, rate_total(:, 5), '-*'); %, ...
     %number_of_op, rate_total(:, 8), '-o');
 xlabel('Number of upload opportunities');
-ylabel('Portion of medium priority data chunks uploaded');
-legend('First opportunity', 'Proposed algorithm', ...
+ylabel('Portion of medium data chunks uploaded');
+legend('First opportunity', 'Balanced DOP', ...
 	'Location', 'southeast');
 saveas(gcf, 'fig_2/big_op_number_medium.fig');
 
@@ -140,8 +148,8 @@ plot(number_of_op, rate_total(:, 3), ...
     number_of_op, rate_total(:, 6), '-*'); %, ...
     %number_of_op, rate_total(:, 9), '-o');
 xlabel('Number of upload opportunities');
-ylabel('Portion of low priority data chunks uploaded');
-legend('First opportunity', 'Proposed algorithm', ...
+ylabel('Portion of unimp. data chunks uploaded');
+legend('First opportunity', 'Balanced DOP', ...
 	'Location', 'southeast');
 saveas(gcf, 'fig_2/big_op_number_low.fig');
 
@@ -151,7 +159,7 @@ plot(number_of_op, rate_all_total(:, 1), ...
     %number_of_op, rate_all_total(:, 3), '-o');
 xlabel('Number of upload opportunities');
 ylabel('Portion of data chunks uploaded');
-legend('First opportunity', 'Proposed algorithm', ...
+legend('First opportunity', 'Balanced DOP', ...
 	'Location', 'southeast');
 saveas(gcf, 'fig_2/big_op_number_all.fig');
 
@@ -160,8 +168,8 @@ plot(number_of_op, length_task(:, 1), ...
     number_of_op, length_task(:, 2), '-*'); %, ...
     %number_of_op, length_task(:, 3), '-o');
 xlabel('Number of upload opportunities');
-ylabel('Total time to finish all data collection (sec)');
-legend('First opportunity', 'Proposed algorithm');
+ylabel('Time to complete all data collection (sec)');
+legend('First opportunity', 'Balanced DOP');
 saveas(gcf, 'fig_2/big_op_number_length.fig');
 
 save('mat/big_op_number.mat')
