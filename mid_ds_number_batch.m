@@ -7,8 +7,10 @@ init_p;
 
 % Initialize environment
 clc;
-rand('state', 0); %#ok<RAND>
-randn('state', 0); %#ok<RAND>
+%rand('state', 0); %#ok<RAND>
+%randn('state', 0); %#ok<RAND>
+rng('default');
+rng(0);
 
 % Constants for DS
 R_0 = 1500;
@@ -27,6 +29,9 @@ ER_MIN = 25;
 
 % Constants
 N_LOOP = 50;
+
+% Random seeds for loops
+rng_seeds = randi(2 ^ 32 - 1, N_LOOP, 2);
 
 number_of_ds = (10:10:200)';
 ss_o = TOTAL_SIZE./ number_of_ds;
@@ -50,10 +55,12 @@ for j = 1:nm_ds
     
     for k = 1:N_LOOP
         % Generate demo instances
+        rng(rng_seeds(k, 1));
         v_ds = mk_vec_ds_new(number_of_ds(j), dxs_mu(j), dxs_sigma(j), ...
             R_0, ...
             ss_o(j), ss_range(j), ...
             DD_M, D_OFFSET, DD_RANGE);
+        rng(rng_seeds(k, 2));
         v_op = mk_vec_op(N_OP, DX_M, ER_MU, ER_SIGMA, ER_MIN);
         
         loop_j = k + (j - 1)* N_LOOP;
@@ -122,7 +129,7 @@ plot(number_of_ds, reward_total(:, 1), ...
     number_of_ds, reward_total(:, 3), '-o');
 xlabel('Number of data sites');
 ylabel('Weighted overall utility');
-legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+legend('First opportunity', 'Balanced DOP', 'Genetic algorithm');
 saveas(gcf, 'fig/mid_ds_number_reward.fig');
 
 figure;
@@ -131,7 +138,7 @@ plot(number_of_ds, time_running(:, 1), ...
     number_of_ds, time_running(:, 3), '-o');
 xlabel('Number of data sites');
 ylabel('Running time (sec)');
-legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+legend('First opportunity', 'Balanced DOP', 'Genetic algorithm');
 saveas(gcf, 'fig/mid_ds_number_time.fig');
 
 figure;
@@ -139,8 +146,8 @@ plot(number_of_ds, rate_total(:, 1), ...
     number_of_ds, rate_total(:, 4), '-*', ...
     number_of_ds, rate_total(:, 7), '-o');
 xlabel('Number of data sites');
-ylabel('Portion of high priority data chunks uploaded');
-legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+ylabel('Portion of important data chunks uploaded');
+legend('First opportunity', 'Balanced DOP', 'Genetic algorithm');
 saveas(gcf, 'fig_2/mid_ds_number_high.fig');
 
 figure;
@@ -148,8 +155,8 @@ plot(number_of_ds, rate_total(:, 2), ...
     number_of_ds, rate_total(:, 5), '-*', ...
     number_of_ds, rate_total(:, 8), '-o');
 xlabel('Number of data sites');
-ylabel('Portion of medium priority data chunks uploaded');
-legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+ylabel('Portion of medium data chunks uploaded');
+legend('First opportunity', 'Balanced DOP', 'Genetic algorithm');
 saveas(gcf, 'fig_2/mid_ds_number_medium.fig');
 
 figure;
@@ -157,8 +164,8 @@ plot(number_of_ds, rate_total(:, 3), ...
     number_of_ds, rate_total(:, 6), '-*', ...
     number_of_ds, rate_total(:, 9), '-o');
 xlabel('Number of data sites');
-ylabel('Portion of low priority data chunks uploaded');
-legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+ylabel('Portion of unimp. data chunks uploaded');
+legend('First opportunity', 'Balanced DOP', 'Genetic algorithm');
 saveas(gcf, 'fig_2/mid_ds_number_low.fig');
 
 figure;
@@ -167,7 +174,7 @@ plot(number_of_ds, rate_all_total(:, 1), ...
     number_of_ds, rate_all_total(:, 3), '-o');
 xlabel('Number of data sites');
 ylabel('Portion of data chunks uploaded');
-legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+legend('First opportunity', 'Balanced DOP', 'Genetic algorithm');
 saveas(gcf, 'fig_2/mid_ds_number_all.fig');
 
 figure;
@@ -175,8 +182,8 @@ plot(number_of_ds, length_task(:, 1), ...
     number_of_ds, length_task(:, 2), '-*', ...
     number_of_ds, length_task(:, 3), '-o');
 xlabel('Number of data sites');
-ylabel('Total time to finish all data collection (sec)');
-legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+ylabel('Time to complete all data collection (sec)');
+legend('First opportunity', 'Balanced DOP', 'Genetic algorithm');
 saveas(gcf, 'fig_2/mid_ds_number_length.fig');
 
 save('mat/mid_ds_number.mat')

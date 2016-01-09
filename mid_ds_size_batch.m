@@ -7,8 +7,10 @@ init_p;
 
 % Initialize environment
 clc;
-rand('state', 0); %#ok<RAND>
-randn('state', 0); %#ok<RAND>
+%rand('state', 0); %#ok<RAND>
+%randn('state', 0); %#ok<RAND>
+rng('default');
+rng(0);
 
 % Constants for DS
 N_DS = 120;
@@ -29,6 +31,9 @@ ER_MIN = 25;
 % Constants
 N_LOOP = 50;
 
+% Random seeds for loops
+rng_seeds = randi(2 ^ 32 - 1, N_LOOP, 2);
+
 size_of_ds = (500:500:10000)';
 ss_range = size_of_ds * 0.6;
 nm_ds = size(size_of_ds, 1);
@@ -48,10 +53,11 @@ for j = 1:nm_ds
     
     for k = 1:N_LOOP
         % Generate demo instances
-        v_ds = mk_vec_ds_new( ...
-            N_DS, DX_MU, DX_SIGMA, R_0, ...
+        rng(rng_seeds(k, 1));
+        v_ds = mk_vec_ds_new(N_DS, DX_MU, DX_SIGMA, R_0, ...
             size_of_ds(j), ss_range(j), ...
             DD_M, D_OFFSET, DD_RANGE);
+        rng(rng_seeds(k, 2));
         v_op = mk_vec_op(N_OP, DX_M, ER_MU, ER_SIGMA, ER_MIN);
         
         loop_j = k + (j - 1)* N_LOOP;
@@ -118,63 +124,63 @@ toc
 plot(size_of_ds, reward_total(:, 1), ...
     size_of_ds, reward_total(:, 2), '-*', ...
     size_of_ds, reward_total(:, 3), '-o');
-xlabel('Size of one single data chunk (kB)');
+xlabel('Average size of data chunks (KB)');
 ylabel('Weighted overall utility');
-legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+legend('First opportunity', 'Balanced DOP', 'Genetic algorithm');
 saveas(gcf, 'fig/mid_ds_size_reward.fig');
 
 figure;
 plot(size_of_ds, time_running(:, 1), ...
     size_of_ds, time_running(:, 2), '-*', ...
     size_of_ds, time_running(:, 3), '-o');
-xlabel('Size of one single data chunk (kB)');
+xlabel('Average size of data chunks (KB)');
 ylabel('Running time (sec)');
-legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+legend('First opportunity', 'Balanced DOP', 'Genetic algorithm');
 saveas(gcf, 'fig/mid_ds_size_time.fig');
 
 figure;
 plot(size_of_ds, rate_total(:, 1), ...
     size_of_ds, rate_total(:, 4), '-*', ...
     size_of_ds, rate_total(:, 7), '-o');
-xlabel('Size of one single data chunk (kB)');
-ylabel('Portion of high priority data chunks uploaded');
-legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+xlabel('Average size of data chunks (KB)');
+ylabel('Portion of important data chunks uploaded');
+legend('First opportunity', 'Balanced DOP', 'Genetic algorithm');
 saveas(gcf, 'fig_2/mid_ds_size_high.fig');
 
 figure;
 plot(size_of_ds, rate_total(:, 2), ...
     size_of_ds, rate_total(:, 5), '-*', ...
     size_of_ds, rate_total(:, 8), '-o');
-xlabel('Size of one single data chunk (kB)');
-ylabel('Portion of medium priority data chunks uploaded');
-legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+xlabel('Average size of data chunks (KB)');
+ylabel('Portion of medium data chunks uploaded');
+legend('First opportunity', 'Balanced DOP', 'Genetic algorithm');
 saveas(gcf, 'fig_2/mid_ds_size_medium.fig');
 
 figure;
 plot(size_of_ds, rate_total(:, 3), ...
     size_of_ds, rate_total(:, 6), '-*', ...
     size_of_ds, rate_total(:, 9), '-o');
-xlabel('Size of one single data chunk (kB)');
-ylabel('Portion of low priority data chunks uploaded');
-legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+xlabel('Average size of data chunks (KB)');
+ylabel('Portion of unimp. data chunks uploaded');
+legend('First opportunity', 'Balanced DOP', 'Genetic algorithm');
 saveas(gcf, 'fig_2/mid_ds_size_low.fig');
 
 figure;
 plot(size_of_ds, rate_all_total(:, 1), ...
     size_of_ds, rate_all_total(:, 2), '-*', ...
     size_of_ds, rate_all_total(:, 3), '-o');
-xlabel('Size of one single data chunk (kB)');
+xlabel('Average size of data chunks (KB)');
 ylabel('Portion of data chunks uploaded');
-legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+legend('First opportunity', 'Balanced DOP', 'Genetic algorithm');
 saveas(gcf, 'fig_2/mid_ds_size_all.fig');
 
 figure;
 plot(size_of_ds, length_task(:, 1), ...
     size_of_ds, length_task(:, 2), '-*', ...
     size_of_ds, length_task(:, 3), '-o');
-xlabel('Size of one single data chunk (kB)');
-ylabel('Total time to finish all data collection (sec)');
-legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+xlabel('Average size of data chunks (KB)');
+ylabel('Time to complete all data collection (sec)');
+legend('First opportunity', 'Balanced DOP', 'Genetic algorithm');
 saveas(gcf, 'fig_2/mid_ds_size_length.fig');
 
 save('mat/mid_ds_size.mat')
