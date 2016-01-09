@@ -125,7 +125,7 @@ toc
 plot(sigma_rate_of_op, reward_total(:, 1), ...
     sigma_rate_of_op, reward_total(:, 2), '-*', ...
     sigma_rate_of_op, reward_total(:, 3), '-o');
-xlabel('Standard deviation of bandwidth of upload opportunities (kB/s)');
+xlabel('STDEV of upload bandwidths (KB/s)');
 ylabel('Weighted overall utility');
 legend('First opportunity', 'Balanced DOP', 'Genetic algorithm');
 saveas(gcf, 'fig/mid_op_sigma_reward.fig');
@@ -134,7 +134,7 @@ figure;
 plot(sigma_rate_of_op, time_running(:, 1), ...
     sigma_rate_of_op, time_running(:, 2), '-*', ...
     sigma_rate_of_op, time_running(:, 3), '-o');
-xlabel('Standard deviation of bandwidth of upload opportunities (kB/s)');
+xlabel('STDEV of upload bandwidths (KB/s)');
 ylabel('Running time (sec)');
 legend('First opportunity', 'Balanced DOP', 'Genetic algorithm');
 saveas(gcf, 'fig/mid_op_sigma_time.fig');
@@ -143,7 +143,7 @@ figure;
 plot(sigma_rate_of_op, rate_total(:, 1), ...
     sigma_rate_of_op, rate_total(:, 4), '-*', ...
     sigma_rate_of_op, rate_total(:, 7), '-o');
-xlabel('Standard deviation of bandwidth of upload opportunities (kB/s)');
+xlabel('STDEV of upload bandwidths (KB/s)');
 ylabel('Portion of important data chunks uploaded');
 legend('First opportunity', 'Balanced DOP', 'Genetic algorithm');
 saveas(gcf, 'fig_2/mid_op_sigma_high.fig');
@@ -152,7 +152,7 @@ figure;
 plot(sigma_rate_of_op, rate_total(:, 2), ...
     sigma_rate_of_op, rate_total(:, 5), '-*', ...
     sigma_rate_of_op, rate_total(:, 8), '-o');
-xlabel('Standard deviation of bandwidth of upload opportunities (kB/s)');
+xlabel('STDEV of upload bandwidths (KB/s)');
 ylabel('Portion of medium data chunks uploaded');
 legend('First opportunity', 'Balanced DOP', 'Genetic algorithm');
 saveas(gcf, 'fig_2/mid_op_sigma_medium.fig');
@@ -161,7 +161,7 @@ figure;
 plot(sigma_rate_of_op, rate_total(:, 3), ...
     sigma_rate_of_op, rate_total(:, 6), '-*', ...
     sigma_rate_of_op, rate_total(:, 9), '-o');
-xlabel('Standard deviation of bandwidth of upload opportunities (kB/s)');
+xlabel('STDEV of upload bandwidths (KB/s)');
 ylabel('Portion of unimp. data chunks uploaded');
 legend('First opportunity', 'Balanced DOP', 'Genetic algorithm');
 saveas(gcf, 'fig_2/mid_op_sigma_low.fig');
@@ -170,7 +170,7 @@ figure;
 plot(sigma_rate_of_op, rate_all_total(:, 1), ...
     sigma_rate_of_op, rate_all_total(:, 2), '-*', ...
     sigma_rate_of_op, rate_all_total(:, 3), '-o');
-xlabel('Standard deviation of bandwidth of upload opportunities (kB/s)');
+xlabel('STDEV of upload bandwidths (KB/s)');
 ylabel('Portion of data chunks uploaded');
 legend('First opportunity', 'Balanced DOP', 'Genetic algorithm');
 saveas(gcf, 'fig_2/mid_op_sigma_all.fig');
@@ -179,7 +179,7 @@ figure;
 plot(sigma_rate_of_op, length_task(:, 1), ...
     sigma_rate_of_op, length_task(:, 2), '-*', ...
     sigma_rate_of_op, length_task(:, 3), '-o');
-xlabel('Standard deviation of bandwidth of upload opportunities (kB/s)');
+xlabel('STDEV of upload bandwidths (KB/s)');
 ylabel('Time to complete all data collection (sec)');
 legend('First opportunity', 'Balanced DOP', 'Genetic algorithm');
 saveas(gcf, 'fig_2/mid_op_sigma_length.fig');
