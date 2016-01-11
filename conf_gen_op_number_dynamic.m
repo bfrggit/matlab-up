@@ -15,14 +15,16 @@ rng('default');
 rng(0);
 
 % Constants for DS
-N_DS = 120;
-DX_MU = 180;
-DX_SIGMA = 40;
+N_GRP = 15;
+N_DS_PER_GRP = 8;
+N_DS = N_GRP * N_DS_PER_GRP;
+DX_MU = 90;
+DX_SIGMA = 20;
 R_0 = 1500;
 S_M = 5000;
 S_RANGE = 3000;
 DD_M = 80;
-DX_MIN_DS = 60;
+DX_MIN_DS = 30;
 D_OFFSET = 120;
 DD_RANGE = 120;
 
@@ -34,12 +36,12 @@ ER_MIN = 25;
 DX_MIN_OP = 200;
 
 % Constants
-N_LOOP = 10;
+N_LOOP = 5;
 
 % Random seeds for loops
 rng_seeds = randi(2 ^ 32 - 1, N_LOOP, 2);
 
-number_of_op = (4:4:20)';
+number_of_op = (3:3:30)';
 dxs_m = LENGTH./ number_of_op;
 nm_op = size(number_of_op, 1);
 loop_n = N_LOOP * nm_op;
@@ -71,6 +73,17 @@ for j = 1:nm_op
             S_M, S_RANGE, DD_M, ...
             DX_MIN_DS, ...
             D_OFFSET, DD_RANGE);
+        x_grp = zeros(N_GRP, 1);
+        for ind_grp = 1:N_GRP
+            ind_ds_offset = (ind_grp - 1) * N_DS_PER_GRP;
+            x_grp(ind_grp) = round( ...
+                sum(v_ds((ind_ds_offset + 1): ...
+                         (ind_ds_offset + N_DS_PER_GRP), 1)) ...
+                / N_DS_PER_GRP);
+            for ind_ds = (ind_ds_offset + 1):(ind_ds_offset + N_DS_PER_GRP)
+                v_ds(ind_ds, 1) = x_grp(ind_grp);
+            end
+        end
         rng(rng_seeds(k, 2));
         v_op = mk_vec_op_min(number_of_op(j), dxs_m(j), ...
             ER_MU, ER_SIGMA, ER_MIN, DX_MIN_OP);
