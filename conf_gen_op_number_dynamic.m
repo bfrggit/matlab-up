@@ -9,11 +9,13 @@ t_wait = 16;
 
 % Initialize environment
 clc;
-rand('state', 0); %#ok<RAND>
-randn('state', 0); %#ok<RAND>
+%rand('state', 0); %#ok<RAND>
+%randn('state', 0); %#ok<RAND>
+rng('default');
+rng(0);
 
 % Constants for DS
-N_DS = 30;
+N_DS = 120;
 DX_MU = 180;
 DX_SIGMA = 40;
 R_0 = 1500;
@@ -25,7 +27,7 @@ D_OFFSET = 120;
 DD_RANGE = 120;
 
 % Constants for OP
-LENGTH = 6000;
+LENGTH = 12000;
 ER_MU = 500;
 ER_SIGMA = 250;
 ER_MIN = 25;
@@ -34,20 +36,25 @@ DX_MIN_OP = 200;
 % Constants
 N_LOOP = 10;
 
-number_of_op = (3:3:15)';
+% Random seeds for loops
+rng_seeds = randi(2 ^ 32 - 1, N_LOOP, 2);
+
+number_of_op = (4:4:20)';
 dxs_m = LENGTH./ number_of_op;
 nm_op = size(number_of_op, 1);
 loop_n = N_LOOP * nm_op;
 reward_total = zeros(nm_op, 3);
 time_running = zeros(nm_op, 3);
+length_task = zeros(nm_op, 3);
 
 mkdir('config_dynamic');
 mkdir('config_dynamic', 'change_op_number');
 
 tic
 for j = 1:nm_op
-    rw1_total = 0.0; rw2_total = 0.0; rw3_total = 0.0;
-    et_plan1 = 0.0; et_plan2 = 0.0; et_plan3 = 0.0;
+    reward_acc = zeros(1, 3);
+    time_acc = zeros(1, 3);
+    length_acc = zeros(1, 3);
     
     mkdir('config_dynamic/change_op_number', ...
         sprintf('%d', number_of_op(j)));
@@ -59,10 +66,12 @@ for j = 1:nm_op
             sprintf('case_%d', k));
         
         % Generate demo instances
+        rng(rng_seeds(k, 1));
         v_ds = mk_vec_ds_new_min(N_DS, DX_MU, DX_SIGMA, R_0, ...
             S_M, S_RANGE, DD_M, ...
             DX_MIN_DS, ...
             D_OFFSET, DD_RANGE);
+        rng(rng_seeds(k, 2));
         v_op = mk_vec_op_min(number_of_op(j), dxs_m(j), ...
             ER_MU, ER_SIGMA, ER_MIN, DX_MIN_OP);
         
@@ -97,15 +106,15 @@ for j = 1:nm_op
         % ASAP planning
         et = cputime;
         [mat_m, ls] = plan_asap(v_ds, v_op);
-        et_plan1 = et_plan1 + (cputime - et);
+        time_acc(1) = time_acc(1) + (cputime - et);
         
         % Calculate actual upload time
         t_up = vec_t_up(v_ds, v_op, mat_m, t_wait);
         v_f = vec_f(v_ds, t_up);
         t_comp = vec_t_comp(v_ds, v_op, mat_m, T_WAIT);
         
-        rw1 = reward(v_ds, v_f);
-        rw1_total = rw1_total + rw1;
+        reward_acc(1) = reward_acc(1) + reward(v_ds, v_f);
+        length_acc(1) = length_acc(1) + t_comp(size(t_comp, 1) - 1);
 
         % Write to plan specification file
         fh = fopen( ...
@@ -132,15 +141,15 @@ for j = 1:nm_op
         % Algorithm 4 planning
         et = cputime;
         [mat_m, ls] = plan_alg4x(v_ds, v_op, t_wait);
-        et_plan2 = et_plan2 + (cputime - et);
+        time_acc(2) = time_acc(2) + (cputime - et);
         
         % Calculate actual upload time
         t_up = vec_t_up(v_ds, v_op, mat_m, t_wait);
         v_f = vec_f(v_ds, t_up);
         t_comp = vec_t_comp(v_ds, v_op, mat_m, T_WAIT);
         
-        rw2 = reward(v_ds, v_f);
-        rw2_total = rw2_total + rw2;
+        reward_acc(2) = reward_acc(2) + reward(v_ds, v_f);
+        length_acc(2) = length_acc(2) + t_comp(size(t_comp, 1) - 1);
         
         % Write to plan specification file
         fh = fopen( ...
@@ -170,7 +179,7 @@ for j = 1:nm_op
         % GA planning
         et = cputime;
         [mat_m, ls] = plan_ga(v_ds, v_op, cst_ls, t_wait);
-        et_plan3 = et_plan3 + (cputime - et);
+        time_acc(3) = time_acc(3) + (cputime - et);
         fprintf('\n');
         
         % Calculate actual upload time
@@ -178,8 +187,8 @@ for j = 1:nm_op
         v_f = vec_f(v_ds, t_up);
         t_comp = vec_t_comp(v_ds, v_op, mat_m, T_WAIT);
         
-        rw3 = reward(v_ds, v_f);
-        rw3_total = rw3_total + rw3;
+        reward_acc(3) = reward_acc(3) + reward(v_ds, v_f);
+        length_acc(3) = length_acc(3) + t_comp(size(t_comp, 1) - 1);
 
         % Write to plan specification file
         fh = fopen( ...
@@ -203,12 +212,9 @@ for j = 1:nm_op
         save(sprintf('config_dynamic/change_op_number/%d/case_%d/ga.mat', ...
                 number_of_op(j), k));
     end
-    reward_total(j, 1) = rw1_total / N_LOOP;
-    reward_total(j, 2) = rw2_total / N_LOOP;
-    reward_total(j, 3) = rw3_total / N_LOOP;
-    time_running(j, 1) = et_plan1 / N_LOOP;
-    time_running(j, 2) = et_plan2 / N_LOOP;
-    time_running(j, 3) = et_plan3 / N_LOOP;
+    reward_total(j, :) = reward_acc / N_LOOP;
+    time_running(j, :) = time_acc / N_LOOP;
+    length_task(j, :) = length_acc / N_LOOP;
 end
 toc
 plot(number_of_op, reward_total(:, 1), ...
@@ -216,7 +222,8 @@ plot(number_of_op, reward_total(:, 1), ...
     number_of_op, reward_total(:, 3), '-o');
 xlabel('Number of upload opportunities');
 ylabel('Weighted overall utility');
-legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+legend('First opportunity', 'Balanced DOP', 'Genetic algorithm', ...
+	'Location', 'southeast');
 saveas(gcf, 'fig/conf_op_number_dynamic_reward.fig');
 
 figure;
@@ -225,7 +232,16 @@ plot(number_of_op, time_running(:, 1), ...
     number_of_op, time_running(:, 3), '-o');
 xlabel('Number of upload opportunities');
 ylabel('Running time (sec)');
-legend('First opportunity', 'Proposed algorithm', 'Genetic algorithm');
+legend('First opportunity', 'Balanced DOP', 'Genetic algorithm');
 saveas(gcf, 'fig/conf_op_number_dynamic_time.fig');
+
+figure;
+plot(number_of_op, length_task(:, 1), ...
+    number_of_op, length_task(:, 2), '-*', ...
+    number_of_op, length_task(:, 3), '-o');
+xlabel('Number of upload opportunities');
+ylabel('Time to complete all data collection (sec)');
+legend('First opportunity', 'Balanced DOP', 'Genetic algorithm');
+saveas(gcf, 'fig_2/conf_op_number_length.fig');
 
 save('mat/conf_op_number_dynamic.mat')
