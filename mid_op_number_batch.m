@@ -186,7 +186,8 @@ plot(number_of_op, length_task(:, 1), ...
     number_of_op, length_task(:, 3), '-o');
 xlabel('Number of upload opportunities');
 ylabel('Time to complete all data collection (sec)');
-legend('First opportunity', 'Balanced DOP', 'Genetic algorithm');
+legend('First opportunity', 'Balanced DOP', 'Genetic algorithm', ...
+	'Location', 'northwest');
 saveas(gcf, 'fig_2/mid_op_number_length.fig');
 
 save('mat/mid_op_number.mat')

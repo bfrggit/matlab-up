@@ -232,7 +232,8 @@ plot(size_of_ds, reward_total(:, 1), ...
     size_of_ds, reward_total(:, 3), '-o');
 xlabel('Size of one single data chunk (kB)');
 ylabel('Weighted overall utility');
-legend('First opportunity', 'Balanced DOP', 'Genetic algorithm');
+legend('First opportunity', 'Balanced DOP', 'Genetic algorithm', ...
+	'Location', 'southwest');
 saveas(gcf, 'fig/conf_ds_size_reward_dynamic.fig');
 
 figure;
@@ -241,7 +242,8 @@ plot(size_of_ds, time_running(:, 1), ...
     size_of_ds, time_running(:, 3), '-o');
 xlabel('Size of one single data chunk (kB)');
 ylabel('Running time (sec)');
-legend('First opportunity', 'Balanced DOP', 'Genetic algorithm');
+legend('First opportunity', 'Balanced DOP', 'Genetic algorithm', ...
+	'Location', 'northwest');
 saveas(gcf, 'fig/conf_ds_size_time_dynamic.fig');
 
 figure;
@@ -250,7 +252,8 @@ plot(size_of_ds, length_task(:, 1), ...
     size_of_ds, length_task(:, 3), '-o');
 xlabel('Size of one single data chunk (kB)');
 ylabel('Time to complete all data collection (sec)');
-legend('First opportunity', 'Balanced DOP', 'Genetic algorithm');
+legend('First opportunity', 'Balanced DOP', 'Genetic algorithm', ...
+	'Location', 'northwest');
 saveas(gcf, 'fig_2/conf_ds_size_length.fig');
 
 save('mat/conf_ds_size_dynamic.mat')

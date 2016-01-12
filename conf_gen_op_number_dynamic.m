@@ -245,7 +245,8 @@ plot(number_of_op, time_running(:, 1), ...
     number_of_op, time_running(:, 3), '-o');
 xlabel('Number of upload opportunities');
 ylabel('Running time (sec)');
-legend('First opportunity', 'Balanced DOP', 'Genetic algorithm');
+legend('First opportunity', 'Balanced DOP', 'Genetic algorithm', ...
+	'Location', 'northwest');
 saveas(gcf, 'fig/conf_op_number_dynamic_time.fig');
 
 figure;
