@@ -110,7 +110,8 @@ plot(size_of_ds, reward_total(:, 1), ...
     %size_of_ds, reward_total(:, 3), '-o');
 xlabel('Average size of data chunks (KB)');
 ylabel('Weighted overall utility');
-legend('First opportunity', 'Balanced DOP');
+legend('First opportunity', 'Balanced DOP', ...
+    'Location', 'southwest');
 saveas(gcf, 'fig/big_ds_size_reward.fig');
 
 figure;
@@ -119,7 +120,8 @@ plot(size_of_ds, time_running(:, 1), ...
     %size_of_ds, time_running(:, 3), '-o');
 xlabel('Average size of data chunks (KB)');
 ylabel('Running time (sec)');
-legend('First opportunity', 'Balanced DOP');
+legend('First opportunity', 'Balanced DOP', ...
+    'Location', 'northwest');
 saveas(gcf, 'fig/big_ds_size_time.fig');
 
 figure;
@@ -128,7 +130,8 @@ plot(size_of_ds, rate_total(:, 1), ...
     %size_of_ds, rate_total(:, 7), '-o');
 xlabel('Average size of data chunks (KB)');
 ylabel('Portion of important data chunks uploaded');
-legend('First opportunity', 'Balanced DOP');
+legend('First opportunity', 'Balanced DOP', ...
+    'Location', 'southwest');
 saveas(gcf, 'fig_2/big_ds_size_high.fig');
 
 figure;
@@ -137,7 +140,8 @@ plot(size_of_ds, rate_total(:, 2), ...
     %size_of_ds, rate_total(:, 8), '-o');
 xlabel('Average size of data chunks (KB)');
 ylabel('Portion of medium data chunks uploaded');
-legend('First opportunity', 'Balanced DOP');
+legend('First opportunity', 'Balanced DOP', ...
+    'Location', 'southwest');
 saveas(gcf, 'fig_2/big_ds_size_medium.fig');
 
 figure;
@@ -146,7 +150,8 @@ plot(size_of_ds, rate_total(:, 3), ...
     %size_of_ds, rate_total(:, 9), '-o');
 xlabel('Average size of data chunks (KB)');
 ylabel('Portion of unimp. data chunks uploaded');
-legend('First opportunity', 'Balanced DOP');
+legend('First opportunity', 'Balanced DOP', ...
+    'Location', 'southwest');
 saveas(gcf, 'fig_2/big_ds_size_low.fig');
 
 figure;
@@ -155,7 +160,8 @@ plot(size_of_ds, rate_all_total(:, 1), ...
     %size_of_ds, rate_all_total(:, 3), '-o');
 xlabel('Average size of data chunks (KB)');
 ylabel('Portion of data chunks uploaded');
-legend('First opportunity', 'Balanced DOP');
+legend('First opportunity', 'Balanced DOP', ...
+    'Location', 'southwest');
 saveas(gcf, 'fig_2/big_ds_size_all.fig');
 
 figure;
@@ -164,7 +170,8 @@ plot(size_of_ds, length_task(:, 1), ...
     %size_of_ds, length_task(:, 3), '-o');
 xlabel('Average size of data chunks (KB)');
 ylabel('Time to complete all data collection (sec)');
-legend('First opportunity', 'Balanced DOP');
+legend('First opportunity', 'Balanced DOP', ...
+    'Location', 'northwest');
 saveas(gcf, 'fig_2/big_ds_size_length.fig');
 
 save('mat/big_ds_size.mat')

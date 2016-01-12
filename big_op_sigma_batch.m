@@ -111,7 +111,8 @@ plot(sigma_rate_of_op, reward_total(:, 1), ...
     %sigma_rate_of_op, reward_total(:, 3), '-o');
 xlabel('STDEV of upload bandwidths (KB/s)');
 ylabel('Weighted overall utility');
-legend('First opportunity', 'Balanced DOP');
+legend('First opportunity', 'Balanced DOP', ...
+    'Location', 'southwest');
 saveas(gcf, 'fig/big_op_sigma_reward.fig');
 
 figure;
@@ -129,7 +130,8 @@ plot(sigma_rate_of_op, rate_total(:, 1), ...
     %sigma_rate_of_op, rate_total(:, 7), '-o');
 xlabel('STDEV of upload bandwidths (KB/s)');
 ylabel('Portion of important data chunks uploaded');
-legend('First opportunity', 'Balanced DOP');
+legend('First opportunity', 'Balanced DOP', ...
+    'Location', 'southwest');
 saveas(gcf, 'fig_2/big_op_sigma_high.fig');
 
 figure;
@@ -138,7 +140,8 @@ plot(sigma_rate_of_op, rate_total(:, 2), ...
     %sigma_rate_of_op, rate_total(:, 8), '-o');
 xlabel('STDEV of upload bandwidths (KB/s)');
 ylabel('Portion of medium data chunks uploaded');
-legend('First opportunity', 'Balanced DOP');
+legend('First opportunity', 'Balanced DOP', ...
+    'Location', 'southwest');
 saveas(gcf, 'fig_2/big_op_sigma_medium.fig');
 
 figure;
@@ -147,7 +150,8 @@ plot(sigma_rate_of_op, rate_total(:, 3), ...
     %sigma_rate_of_op, rate_total(:, 9), '-o');
 xlabel('STDEV of upload bandwidths (KB/s)');
 ylabel('Portion of unimp. data chunks uploaded');
-legend('First opportunity', 'Balanced DOP');
+legend('First opportunity', 'Balanced DOP', ...
+    'Location', 'southwest');
 saveas(gcf, 'fig_2/big_op_sigma_low.fig');
 
 figure;
@@ -156,7 +160,8 @@ plot(sigma_rate_of_op, rate_all_total(:, 1), ...
     %sigma_rate_of_op, rate_all_total(:, 3), '-o');
 xlabel('STDEV of upload bandwidths (KB/s)');
 ylabel('Portion of data chunks uploaded');
-legend('First opportunity', 'Balanced DOP');
+legend('First opportunity', 'Balanced DOP', ...
+    'Location', 'southwest');
 saveas(gcf, 'fig_2/big_op_sigma_all.fig');
 
 figure;
@@ -165,7 +170,8 @@ plot(sigma_rate_of_op, length_task(:, 1), ...
     %sigma_rate_of_op, length_task(:, 3), '-o');
 xlabel('STDEV of upload bandwidths (KB/s)');
 ylabel('Time to complete all data collection (sec)');
-legend('First opportunity', 'Balanced DOP');
+legend('First opportunity', 'Balanced DOP', ...
+    'Location', 'northwest');
 saveas(gcf, 'fig_2/big_op_sigma_length.fig');
 
 save('mat/big_op_sigma.mat')

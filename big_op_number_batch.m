@@ -169,7 +169,8 @@ plot(number_of_op, length_task(:, 1), ...
     %number_of_op, length_task(:, 3), '-o');
 xlabel('Number of upload opportunities');
 ylabel('Time to complete all data collection (sec)');
-legend('First opportunity', 'Balanced DOP');
+legend('First opportunity', 'Balanced DOP', ...
+    'Location', 'northwest');
 saveas(gcf, 'fig_2/big_op_number_length.fig');
 
 save('mat/big_op_number.mat')
