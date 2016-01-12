@@ -1,6 +1,6 @@
 % Author: Charles ZHU
 % --
-% Statistics, w/ fixed total amount of data, variable number of DS
+% Statistics, w/ fixed total amount of data, variable size of DS
 % Batch script (mid version)
 
 init_p;
@@ -33,12 +33,12 @@ N_LOOP = 20;
 % Random seeds for loops
 rng_seeds = randi(2 ^ 32 - 1, N_LOOP, 2);
 
-number_of_ds = (10:10:200)';
-ss_o = TOTAL_SIZE./ number_of_ds;
-ss_range = ss_o * 0.6;
-dxs_mu = LENGTH./ number_of_ds;
+size_of_ds = (500:500:10000)';
+ss_range = size_of_ds * 0.6;
+ns_ds = round(TOTAL_SIZE./ size_of_ds);
+dxs_mu = LENGTH./ ns_ds;
 dxs_sigma = dxs_mu./ 3;
-nm_ds = size(number_of_ds, 1);
+nm_ds = size(size_of_ds, 1);
 loop_n = N_LOOP * nm_ds;
 reward_total = zeros(nm_ds, 3);
 time_running = zeros(nm_ds, 3);
@@ -56,9 +56,8 @@ for j = 1:nm_ds
     for k = 1:N_LOOP
         % Generate demo instances
         rng(rng_seeds(k, 1));
-        v_ds = mk_vec_ds_new(number_of_ds(j), dxs_mu(j), dxs_sigma(j), ...
-            R_0, ...
-            ss_o(j), ss_range(j), ...
+        v_ds = mk_vec_ds_new(ns_ds(j), dxs_mu(j), dxs_sigma(j), R_0, ...
+            size_of_ds(j), ss_range(j), ...
             DD_M, D_OFFSET, DD_RANGE);
         rng(rng_seeds(k, 2));
         v_op = mk_vec_op(N_OP, DX_M, ER_MU, ER_SIGMA, ER_MIN);
@@ -124,66 +123,73 @@ for j = 1:nm_ds
     length_task(j, :) = length_acc / N_LOOP;
 end
 toc
-plot(number_of_ds, reward_total(:, 1), ...
-    number_of_ds, reward_total(:, 2), '-*', ...
-    number_of_ds, reward_total(:, 3), '-o');
-xlabel('Number of data sites');
+plot(size_of_ds, reward_total(:, 1), ...
+    size_of_ds, reward_total(:, 2), '-*', ...
+    size_of_ds, reward_total(:, 3), '-o');
+xlabel('Average size of data chunks (KB)');
 ylabel('Weighted overall utility');
-legend('First opportunity', 'Balanced DOP', 'Genetic algorithm');
-saveas(gcf, 'fig/mid_ds_number_reward.fig');
+legend('First opportunity', 'Balanced DOP', 'Genetic algorithm', ...
+    'Location', 'southwest');
+saveas(gcf, 'fig/mid_ds_size_2_reward.fig');
 
 figure;
-plot(number_of_ds, time_running(:, 1), ...
-    number_of_ds, time_running(:, 2), '-*', ...
-    number_of_ds, time_running(:, 3), '-o');
-xlabel('Number of data sites');
+plot(size_of_ds, time_running(:, 1), ...
+    size_of_ds, time_running(:, 2), '-*', ...
+    size_of_ds, time_running(:, 3), '-o');
+xlabel('Average size of data chunks (KB)');
 ylabel('Running time (sec)');
-legend('First opportunity', 'Balanced DOP', 'Genetic algorithm');
-saveas(gcf, 'fig/mid_ds_number_time.fig');
+legend('First opportunity', 'Balanced DOP', 'Genetic algorithm', ...
+    'Location', 'northwest');
+saveas(gcf, 'fig/mid_ds_size_2_time.fig');
 
 figure;
-plot(number_of_ds, rate_total(:, 1), ...
-    number_of_ds, rate_total(:, 4), '-*', ...
-    number_of_ds, rate_total(:, 7), '-o');
-xlabel('Number of data sites');
+plot(size_of_ds, rate_total(:, 1), ...
+    size_of_ds, rate_total(:, 4), '-*', ...
+    size_of_ds, rate_total(:, 7), '-o');
+xlabel('Average size of data chunks (KB)');
 ylabel('Portion of important data chunks uploaded');
-legend('First opportunity', 'Balanced DOP', 'Genetic algorithm');
-saveas(gcf, 'fig_2/mid_ds_number_high.fig');
+legend('First opportunity', 'Balanced DOP', 'Genetic algorithm', ...
+    'Location', 'southwest');
+saveas(gcf, 'fig_2/mid_ds_size_2_high.fig');
 
 figure;
-plot(number_of_ds, rate_total(:, 2), ...
-    number_of_ds, rate_total(:, 5), '-*', ...
-    number_of_ds, rate_total(:, 8), '-o');
-xlabel('Number of data sites');
+plot(size_of_ds, rate_total(:, 2), ...
+    size_of_ds, rate_total(:, 5), '-*', ...
+    size_of_ds, rate_total(:, 8), '-o');
+xlabel('Average size of data chunks (KB)');
 ylabel('Portion of medium data chunks uploaded');
-legend('First opportunity', 'Balanced DOP', 'Genetic algorithm');
-saveas(gcf, 'fig_2/mid_ds_number_medium.fig');
+legend('First opportunity', 'Balanced DOP', 'Genetic algorithm', ...
+    'Location', 'southwest');
+saveas(gcf, 'fig_2/mid_ds_size_2_medium.fig');
 
 figure;
-plot(number_of_ds, rate_total(:, 3), ...
-    number_of_ds, rate_total(:, 6), '-*', ...
-    number_of_ds, rate_total(:, 9), '-o');
-xlabel('Number of data sites');
+plot(size_of_ds, rate_total(:, 3), ...
+    size_of_ds, rate_total(:, 6), '-*', ...
+    size_of_ds, rate_total(:, 9), '-o');
+xlabel('Average size of data chunks (KB)');
 ylabel('Portion of unimp. data chunks uploaded');
-legend('First opportunity', 'Balanced DOP', 'Genetic algorithm');
-saveas(gcf, 'fig_2/mid_ds_number_low.fig');
+legend('First opportunity', 'Balanced DOP', 'Genetic algorithm', ...
+    'Location', 'southwest');
+saveas(gcf, 'fig_2/mid_ds_size_2_low.fig');
 
 figure;
-plot(number_of_ds, rate_all_total(:, 1), ...
-    number_of_ds, rate_all_total(:, 2), '-*', ...
-    number_of_ds, rate_all_total(:, 3), '-o');
-xlabel('Number of data sites');
+plot(size_of_ds, rate_all_total(:, 1), ...
+    size_of_ds, rate_all_total(:, 2), '-*', ...
+    size_of_ds, rate_all_total(:, 3), '-o');
+xlabel('Average size of data chunks (KB)');
 ylabel('Portion of data chunks uploaded');
-legend('First opportunity', 'Balanced DOP', 'Genetic algorithm');
-saveas(gcf, 'fig_2/mid_ds_number_all.fig');
+legend('First opportunity', 'Balanced DOP', 'Genetic algorithm', ...
+    'Location', 'southwest');
+saveas(gcf, 'fig_2/mid_ds_size_2_all.fig');
 
 figure;
-plot(number_of_ds, length_task(:, 1), ...
-    number_of_ds, length_task(:, 2), '-*', ...
-    number_of_ds, length_task(:, 3), '-o');
-xlabel('Number of data sites');
+plot(size_of_ds, length_task(:, 1), ...
+    size_of_ds, length_task(:, 2), '-*', ...
+    size_of_ds, length_task(:, 3), '-o');
+xlabel('Average size of data chunks (KB)');
 ylabel('Time to complete all data collection (sec)');
-legend('First opportunity', 'Balanced DOP', 'Genetic algorithm');
-saveas(gcf, 'fig_2/mid_ds_number_length.fig');
+legend('First opportunity', 'Balanced DOP', 'Genetic algorithm', ...
+    'Location', 'northwest');
+saveas(gcf, 'fig_2/mid_ds_size_2_length.fig');
 
-save('mat/mid_ds_number.mat')
+save('mat/mid_ds_size_2.mat')
