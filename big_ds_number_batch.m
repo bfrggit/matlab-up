@@ -113,7 +113,8 @@ plot(number_of_ds, reward_total(:, 1), ...
     %number_of_ds, reward_total(:, 3), '-o');
 xlabel('Number of data sites');
 ylabel('Weighted overall utility');
-legend('First opportunity', 'Balanced DOP');
+legend('First opportunity', 'Balanced DOP', ...
+    'Location', 'southeast');
 saveas(gcf, 'fig/big_ds_number_reward.fig');
 
 figure;
@@ -131,7 +132,8 @@ plot(number_of_ds, rate_total(:, 1), ...
     %number_of_ds, rate_total(:, 7), '-o');
 xlabel('Number of data sites');
 ylabel('Portion of important data chunks uploaded');
-legend('First opportunity', 'Balanced DOP');
+legend('First opportunity', 'Balanced DOP', ...
+    'Location', 'southeast');
 saveas(gcf, 'fig_2/big_ds_number_high.fig');
 
 figure;
@@ -141,7 +143,8 @@ plot(number_of_ds, rate_total(:, 2), ...
 xlabel('Number of data sites');
 ylabel('Portion of medium data chunks uploaded');
 legend('First opportunity', 'Balanced DOP');
-saveas(gcf, 'fig_2/big_ds_number_medium.fig');
+saveas(gcf, 'fig_2/big_ds_number_medium.fig', ...
+    'Location', 'southeast');
 
 figure;
 plot(number_of_ds, rate_total(:, 3), ...
@@ -150,7 +153,8 @@ plot(number_of_ds, rate_total(:, 3), ...
 xlabel('Number of data sites');
 ylabel('Portion of unimp. data chunks uploaded');
 legend('First opportunity', 'Balanced DOP');
-saveas(gcf, 'fig_2/big_ds_number_low.fig');
+saveas(gcf, 'fig_2/big_ds_number_low.fig', ...
+    'Location', 'southeast');
 
 figure;
 plot(number_of_ds, rate_all_total(:, 1), ...
@@ -159,7 +163,8 @@ plot(number_of_ds, rate_all_total(:, 1), ...
 xlabel('Number of data sites');
 ylabel('Portion of data chunks uploaded');
 legend('First opportunity', 'Balanced DOP');
-saveas(gcf, 'fig_2/big_ds_number_all.fig');
+saveas(gcf, 'fig_2/big_ds_number_all.fig', ...
+    'Location', 'southeast');
 
 figure;
 plot(number_of_ds, length_task(:, 1), ...
